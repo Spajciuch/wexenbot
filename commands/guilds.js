@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
     if(args.join(" ") == '') {
     const embed = {
   "description": guildNames,
-  "color": 16777215,
+  "color": 16750361,
   "footer": {
     "icon_url": "https://cdn.discordapp.com/avatars/460153151073288202/e6fb8a855d1a0646bf790cfe3022e69a.png?size=2048",
     "text": "wexen"
