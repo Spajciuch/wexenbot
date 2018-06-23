@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 
     let member = message.mentions.members.first();
     if (!member)
-      return message.reply("Oznacz kogoś.");
+      return message.reply("You need to tag someone.");
     if (!member.bannable)
       return message.reply("I can't do that! Do I have enough permissions?");
 
