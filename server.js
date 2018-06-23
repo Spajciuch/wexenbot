@@ -79,6 +79,12 @@ client.on("message", message => {
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
     message.guild.owner.send(message.author.tag + " sent @everyone or @here on **" + message.guild.name + "**, on channel **" + message.channel.name + "**");
     message.reply('Hey! Don\'t do that!')
+    if(command == 'username'){
+    if(message.author.id !== '367390191721381890') return message.reply("Nie masz uprawnień")
+  client.user.setUsername(args.join(" "))
+  console.log(`Zmieniono mój nick`)
+    }
+  message.channel.send("Done")
   };
 })
 
