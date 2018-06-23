@@ -71,12 +71,13 @@ if(commandfile) commandfile.run(client ,message,args);
         .addField("Info", `${client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
     message.channel.send({embed: help})
+  }
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("Nie masz uprawnień")
   client.user.setUsername(args.join(" "))
   console.log(`Zmieniono mój nick`)
   message.channel.send("Done")
- }
+ 
   }
 });
 //@everyone
