@@ -51,4 +51,4 @@ fs.readdir(`./commands/`,(err, files)=>{
     client.commands.set(props.help.name, props)
   })
 })
-client.logn(process.env.TOKEN)
+client.login(process.env.TOKEN)
