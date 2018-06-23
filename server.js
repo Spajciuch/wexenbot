@@ -67,10 +67,10 @@ if(commandfile) commandfile.run(client ,message,args);
    let help = new Discord.RichEmbed()
         .setAuthor("List of Commands")
         .setColor(config.embed_color)
-        .addField("Category 1", `${client.commands.filter(cmd => cmd.help.category === 'Category 1').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
+        .addField("Informacyjne", `${client.commands.filter(cmd => cmd.help.category === 'informacyjne').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
         .addField("Category 2", `${client.commands.filter(cmd => cmd.help.category === 'Category 2').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
         .addField("Category 3", `${client.commands.filter(cmd => cmd.help.category === 'Category 3').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true);
-    message.channel.send(help)
+    message.channel.send({help})
   }
 });
 client.login(process.env.TOKEN)
