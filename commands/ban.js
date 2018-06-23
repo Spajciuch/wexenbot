@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
     .then(member.ban(7, reason))
       .catch(error => message.reply(`Sorry ${message.author} , i can't ban, because: ${error.code}`));
     const embed = {
-  "title": Banned!",
+  "title": "Banned!",
   "description": `${member.user.tag} (id: ${member.user.id}) has been banned by ${message.author.tag} (id: ${message.author.id}), because: ${reason}`,
   "color": 16777215,
   "footer": {
