@@ -2,7 +2,6 @@ const Discord = require('discord.js')
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
-let prefix = config.prefix
 client.commands = new Discord.Collection()
 var d = new Date()
 var hour = d.getHours() +2
@@ -62,5 +61,7 @@ if (message.author.bot) return;
   let prefix = config.prefix
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
+    let commandfile = client.commands.get(cmd.slice(prefix.length));
+if(commandfile) commandfile.run(client ,message,args);
 });
 client.login(process.env.TOKEN)
