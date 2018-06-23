@@ -87,6 +87,9 @@ client.on("message", message => {
     message.guild.owner.send(message.author.tag + " sent @everyone or @here on **" + message.guild.name + "**, on channel **" + message.channel.name + "**");
     message.reply('Hey! Don\'t do that!')
   }
+  if(message.content == '<@460153151073288202>' || message.content == '<!@460153151073288202>') {
+   message.channel.send('what')
+  }
 })
 
 client.login(process.env.TOKEN)
