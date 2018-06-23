@@ -73,4 +73,9 @@ if(commandfile) commandfile.run(client ,message,args);
     message.channel.send({embed: help})
   }
 });
+//@everyone
+client.on("message", m => {
+  if(m.content.includes("@everyone") || m.content.includes("@here")) return m.guild.owner.send(m.author.tag + " sent @everyone or @here on **" + m.guild.name + "**, on channel **" + m.channel.name + "**");
+})
+
 client.login(process.env.TOKEN)
