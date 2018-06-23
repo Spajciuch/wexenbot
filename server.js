@@ -75,8 +75,10 @@ if(commandfile) commandfile.run(client ,message,args);
 });
 //@everyone
 client.on("message", m => {
-  if(m.content.includes("@everyone") || m.content.includes("@here")) return {m.guild.owner.send(m.author.tag + " sent @everyone or @here on **" + m.guild.name + "**, on channel **" + m.channel.name + "**")
-                                                                            m.reply('Hey! Don\'t do that!')};
+  if(m.content.includes("@everyone") || m.content.includes("@here")) {
+    m.guild.owner.send(m.author.tag + " sent @everyone or @here on **" + m.guild.name + "**, on channel **" + m.channel.name + "**");
+    m.reply('Hey! Don\'t do that!')
+  };
 })
 
 client.login(process.env.TOKEN)
