@@ -68,7 +68,7 @@ if(commandfile) commandfile.run(client ,message,args);
         .setAuthor("List of Commands")
         .setColor(config.embed_color)
         .addField("Informacyjne", `${client.commands.filter(cmd => cmd.help.category === 'informacyjne').map(cmd => `\`${cmd.help.name}\``).join(", ")}`, true)
-    message.channel.send({help})
+    message.channel.send({embed: help})
   }
 });
 client.login(process.env.TOKEN)
