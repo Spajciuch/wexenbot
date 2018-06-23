@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
+let prefix = config.prefix
 client.commands = new Discord.Collection()
 var d = new Date()
 var hour = d.getHours() +2
