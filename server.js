@@ -51,4 +51,4 @@ fs.readdir(`./commands/`,(err, files)=>{
     client.commands.set(props.help.name, props)
   })
 })
-client.logn("PYTAŁEM SIE XDDD")
+client.logn(process.env.TOKEN)
