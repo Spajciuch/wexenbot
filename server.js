@@ -32,7 +32,7 @@ switch (new Date().getDay()) {
 }
 client.on("ready", () => {
 
-    client.user.setActivity("m!help -general", {type: "STREAMING"});
+    client.user.setActivity(">help", {type: "LISTENING"});
     console.log('[client] Logowanie')
     console.log("[client] Wystartowano o " + time)
     console.log(`[client] Zalogowano jako: ${client.user.username}`);
