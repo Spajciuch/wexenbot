@@ -1,0 +1,16 @@
+{
+  "name": "wexenbot",
+  "version": "1.0.0",
+  "description": "Bot neoney i Spyte",
+  "main": "server.js",
+  "author": "neoney i Spyte",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  },
+  "engines": {
+    "node": "9.7.1"
+  }
+}
