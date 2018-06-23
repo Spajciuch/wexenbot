@@ -75,6 +75,7 @@ if(commandfile) commandfile.run(client ,message,args);
 });
 //@everyone
 client.on("message", message => {
+  if(message.channel.type.toLowerCase() == 'dm') return;
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
     message.guild.owner.send(message.author.tag + " sent @everyone or @here on **" + message.guild.name + "**, on channel **" + message.channel.name + "**");
     message.reply('Hey! Don\'t do that!')
