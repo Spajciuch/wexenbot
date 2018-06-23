@@ -26,8 +26,7 @@ message.channel.send({ embed });
       if(!Number.isInteger(numer)) return message.reply('Not a number.');
       if(numer > client.guilds.size) return message.reply('Too big.');
       if(numer < 1) return message.reply('How would you use it?');
-      if(!client.guilds.first(client.guilds.size)[numer - 1].available) return message.reply("Impossible here ;c");
-      client.guilds.first(client.guilds.size)[numer - 1].channels.first().createInvite()
+      client.guilds.array()[numer - 1].channels.array()[0].createInvite()
         .then(invite => {message.author.send("https://discord.gg/" + invite.code)
                          message.channel.send('Check dm!')
                           .then(message => message.delete(5000))})
