@@ -73,7 +73,7 @@ if(commandfile) commandfile.run(client ,message,args);
     message.channel.send({embed: help})
   }
      if(command == 'username') {
-  if(message.author.id !== '367390191721381890') return message.reply("Nie masz uprawnień")
+  if(message.author.id !== '367390191721381890') return message.reply("You haven't got permissions for use it")
   client.user.setUsername(args.join(" "))
   console.log(`Zmieniono mój nick`)
   message.channel.send("Done")
