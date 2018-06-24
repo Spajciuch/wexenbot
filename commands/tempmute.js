@@ -1,13 +1,11 @@
 const Discord = require("discord.js");
 const ms = require("ms");
-const config = require('../config.json')
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, config) => {
 
-   if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Sorry, but you do not have valid permissions! If you beleive this is a error, contact an owner.");
-   let tomute = message.guild.member(message.mentions.users.first());
-   if (!tomute) return message.reply("Couldn't find user.");
-   if (tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("The user you are trying to mute is either the same, or higher role than you.");
-   let muterole = message.guild.roles.find(`name`, "Muted");
+      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You aren't permitted to do that");
+    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if (!tomute) return message.reply("Couldn't find user.");
+    let muterole = message.guild.roles.find(`name`, "Muted");
 
     if (!muterole) {
         try {
