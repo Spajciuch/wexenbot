@@ -10,8 +10,9 @@ var text = args.join(" ")
 let embed = new Discord.RichEmbed()
 .setColor(config.embed_color)
 .setThumbnail(client.user.avatarURL)
-.addField("Changelog", args.join(" ").split("/|/")[1])
-.setDescription(args.join(" ").split("/|/")[0])
+.setAuthor("Changelog")
+.setTitle("Update: " + args.join(" ").split("/|/")[0])
+.setDescription(args.join(" ").split("/|/")[1])
 .setFooter("Changelog")
 send(channel, embed, {
   name: name,
