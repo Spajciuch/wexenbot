@@ -1,7 +1,7 @@
 
 const Discord = require("discord.js");
 const config = require(`../config.json`)
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, config) => {
 
   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
   let day = message.guild.createdAt.getDate()
