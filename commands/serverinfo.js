@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
    let sicon = message.guild.iconURL;
    let serverembed = new Discord.RichEmbed()
    .setAuthor(message.guild.name, sicon)
-   .setFooter(`Server Created at • ${day}.${month}.${year}`)
+   .setFooter(`Guild Created at • ${day}.${month}.${year}`)
    .setColor(config.embed_color)
    .addField("Name", message.guild.name, true)
    .addField("Owner", `${message.guild.owner}`, true)
