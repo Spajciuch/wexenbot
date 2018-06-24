@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
   "footer": {
     "icon_url": "https://cdn.discordapp.com/avatars/460153151073288202/e6fb8a855d1a0646bf790cfe3022e69a.png?size=2048",
     "text": "weXen"
-  }
+  },
   "author": {
     "name": "Guilds with me on them"
   },
