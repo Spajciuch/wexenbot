@@ -84,11 +84,17 @@ if(commandfile) commandfile.run(client ,message,args);
 client.on("message", message => {
   if(message.channel.type.toLowerCase() == 'dm') return;
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
-    message.guild.owner.send(message.author.tag + " sent @everyone or @here on **" + message.guild.name + "**, on channel **" + message.channel.name + "**");
+    let embed = new Discord.RichEmbed()
+    .setTitle("Someone used @everyone or @here")
+    .addField("Server", message.guild.name,true)
+    .addField("Member", message.author, true)
+    .addField("Channel",message.channel)
+    .setColor(config.embed_color)
+    message.guild.owner.send({embed});
     message.reply('Hey! Don\'t do that!')
   }
   if(message.content == '<@460153151073288202>' || message.content == '<!@460153151073288202>') {
-   message.channel.send('what')
+   message.channel.send('What?')
   }
 })
 
