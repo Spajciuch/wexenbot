@@ -33,7 +33,7 @@ message.channel.send({ embed });
       let embed = new Discord.RichEmbed()
       .setTitle("Invitation Link")
       .addField("Guild",client.guilds.array()[numer - 1])
-      .addField("Link", https://discord.gg/" + invite.code )
+      .addField("Link", "https://discord.gg/" + invite.code )
       .setColor(config.embed_color)
       .setFooter("Invitation Link")
       message.author.send({embed})
