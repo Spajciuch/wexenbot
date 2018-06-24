@@ -10,7 +10,8 @@
   "dependencies": {
     "discord.js": "^11.3.2",
      "quick.hook": "^1.4.2",
-    "text-meme" : "^2.3.0"
+    "text-meme" : "^2.3.0",
+    "ms" : "^2.1.1"
   },
   "engines": {
     "node": "9.7.1"
