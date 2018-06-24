@@ -14,7 +14,7 @@ let embed = new Discord.RichEmbed()
 .setTitle("Update: " + args.join(" ").split("/|/")[0])
 .setDescription(args.join(" ").split("/|/")[1])
 .setFooter("Changelog")
-(channel, embed, {
+send(channel, embed, {
   name: name,
   icon: icon
 })
