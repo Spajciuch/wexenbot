@@ -20,5 +20,6 @@ send(channel, embed, {
 message.delete()
 }
 module.exports.help = {
-  name: "changelog"
+  name: "changelog",
+  category: "for owner"
 }
