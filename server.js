@@ -86,7 +86,7 @@ if(commandfile) commandfile.run(client ,message,args);
 //@everyone
 client.on("message", message => {
   if(message.channel.type.toLowerCase() == 'dm') return;
-  if(message.author.id == guild.owner.id) return
+  if(message.author.id == message.guild.owner.id) return
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
     let embed = new Discord.RichEmbed()
     .setTitle("Someone used @everyone or @here")
