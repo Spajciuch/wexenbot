@@ -13,7 +13,10 @@
     "text-meme" : "^2.3.0",
     "ms" : "^2.1.1",
     "discord.js-musicbot-addon": "^12.0.6",
-    "ytsearcher": "^1.1.2"
+    "ytsearcher": "^1.1.2",
+    "ytdl-core": "^0.20.4",
+    "youtube-playlist-info": "^1.1.2",
+    "node-opus": "^0.3.0"
   },
   "engines": {
     "node": "9.7.1"
