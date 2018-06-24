@@ -13,11 +13,11 @@ module.exports.run = async (client, message, args) => {
     if (!reason)
       return message.reply("Give me a reason!");
 
-    await member.send("You've kicked from **" + message.guild.name + "**, because " + reason + ". You've been kicked by " + message.author.tag + " (id: " + message.author.id + ").")
+member.send("You've been kicked from **" + message.guild.name + "**, because " + reason + ". You've been kicked by " + message.author.tag + " (id: " + message.author.id + ").")
     .then(member.kick(reason))
-      .catch(error => message.reply(`Sorry ${message.author} , i couldn't kick, because: ${error.code}`));
+      .catch(error => message.channel.send(`Sorry ${message.author} , i couldn't notify him/her, because: ${error.message}`));
     const embed = {
-  "title": "Banned!",
+  "title": "Kicked!",
   "description": `${member.user.tag} (id: ${member.user.id}) has been kicked by ${message.author.tag} (id: ${message.author.id}), because: ${reason}`,
   "color": 16750361,
   "footer": {
