@@ -9,7 +9,7 @@ weXen is a moderation and administration bot using [discord.js library]("https:/
 - [x] fix kick command
 - [x] prepare readme
 ### Contact 
-If you have an issue or you want to help us join our guild : https://discord.gg/CHJRGS
+If you have an issue or you want to help us join [our discord](https://discord.gg/CHJRGS)
 # License
 The MIT License
 
