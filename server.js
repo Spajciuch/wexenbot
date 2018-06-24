@@ -72,7 +72,7 @@ if(commandfile) commandfile.run(client, message, args, config);
    let help = new Discord.RichEmbed()
         .setAuthor("List of Commands")
         .setColor(config.embed_color)
-        .addField("Total commands: ", jsfile.length)
+        .addField("Total commands: ", jsfile.length - 1)
         .addField("Info", `${client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Fun", `${client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
