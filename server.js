@@ -74,13 +74,6 @@ if(commandfile) commandfile.run(client ,message,args);
    message.channel.send({embed: help})
   }
 
-if(command == "changelog") {
-client.guilds.find("id", "423545059666034689").fetchWebhooks()
-.then(webhooks =>{
-let hook = webhooks.find("name", "weXen changelog");
-hook.send(args.join(" "));
-});
-}
 
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
