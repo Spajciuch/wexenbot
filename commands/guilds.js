@@ -35,7 +35,7 @@ message.channel.send({ embed });
       .addField("Guild",client.guilds.array()[numer - 1])
       .addField("Link", "https://discord.gg/" + invite.code )
       .setColor(config.embed_color)
-      .setFooter("weXen", client.user.avatartURL)
+      .setFooter("weXen", client.user.avatarURL)
       message.author.send({embed})
        message.channel.send('Check dm!')
       .then(message => message.delete(5000))})
