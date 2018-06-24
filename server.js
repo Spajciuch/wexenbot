@@ -73,7 +73,7 @@ if(commandfile) commandfile.run(client ,message,args);
     message.channel.send({embed: help})
   }
 
-if(command == "changelog") }
+if(command == "changelog") {
 client.guilds.find("id", "423545059666034689").fetchWebhooks()
 .then(webhooks =>{
 let hook = webhooks.find("name", "weXen changelog");
