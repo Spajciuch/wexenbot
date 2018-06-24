@@ -114,5 +114,5 @@ client.login(process.env.TOKEN)
 Music.start(client, {
    prefix: config.prefix,
   youtubeKey: config.yt,
-  embedColor: config.neoney_color
+  embedColor: 16750361
 });
