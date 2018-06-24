@@ -63,7 +63,7 @@ if (message.author.bot) return;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
     let commandfile = client.commands.get(cmd.slice(prefix.length));
-if(commandfile) commandfile.run(client ,message,args);
+if(commandfile) commandfile.run(client, message, args, config);
   if(command == 'help'){
    let help = new Discord.RichEmbed()
         .setAuthor("List of Commands")
