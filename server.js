@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const Music = require('discord.js-musicbot-addon');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
@@ -109,3 +110,8 @@ client.on("message", message => {
 })
 
 client.login(process.env.TOKEN)
+
+Music.start(client, {
+   prefix: config.prefix,
+  youtubeKey: config.yt,
+});
