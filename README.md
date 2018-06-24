@@ -4,7 +4,7 @@ weXen is a moderation and administration bot using [discord.js library]("https:/
 ### To do
 - [ ] mute command
 - [ ] tempmute command
-- [ ] fix kick command
+- [x] fix kick command
 - [x] prepare readme
 ### Contact 
 If you have an issue or you want to help us join our guild : https://discord.gg/CHJRGS
