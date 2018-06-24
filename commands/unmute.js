@@ -31,8 +31,6 @@ exports.conf = {
     aliases: [],
     permLevel: 2
 };
-
-}
 module.exports.help = {
   name: "unmute",
   category: "util"
