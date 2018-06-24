@@ -4,13 +4,13 @@ const config = require(`../config.json`)
 module.exports.run = async (client, message, args) => {
 
   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
-  let day = message.guild.createdAt.getDate()
-  let month = 1 + message.guild.createdAt.getMonth()
+  let day = message.guild.createdAt.getDate().padStart(2, 0)
+  let month = 1 + message.guild.createdAt.getMonth().padStart(2, 0)
   let year = message.guild.createdAt.getFullYear()
    let sicon = message.guild.iconURL;
    let serverembed = new Discord.RichEmbed()
    .setAuthor(message.guild.name, sicon)
-   .setFooter(`Server Created at• ${day}.${month}.${year}`)
+   .setFooter(`Server Created at • ${day}.${month}.${year}`)
    .setColor(config.embed_color)
    .addField("Name", message.guild.name, true)
    .addField("Owner", `${message.guild.owner}`, true)
