@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const send = require("quick.hook")
-const config = require(`../config.json`)
 module.exports.run = async (client, message, args, config) => {
   if(message.author.id !== '367390191721381890' && message.author.id !== '316226442721755137') return message.reply("You aren't permitted to do that!")
 var channel = client.channels.get('460167167783206912')
