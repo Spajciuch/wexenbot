@@ -6,10 +6,6 @@ module.exports.run = async (client, message, args) => {
     const embed = {
   "description": guildNames,
   "color": 16750361,
-  "footer": {
-    "icon_url": "https://cdn.discordapp.com/avatars/460153151073288202/e6fb8a855d1a0646bf790cfe3022e69a.png?size=2048",
-    "text": "weXen"
-  },
   "author": {
     "name": "Guilds with me on them"
   },
@@ -35,7 +31,7 @@ message.channel.send({ embed });
       .addField("Guild",client.guilds.array()[numer - 1])
       .addField("Link", "https://discord.gg/" + invite.code )
       .setColor(config.embed_color)
-      .setFooter("weXen", client.user.avatarURL)
+      .setFooter("Invitation Link")
       message.author.send({embed})
        message.channel.send('Check dm!')
       .then(message => message.delete(5000))})
