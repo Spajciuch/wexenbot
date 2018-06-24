@@ -70,7 +70,7 @@ if(commandfile) commandfile.run(client ,message,args);
         .setColor(config.embed_color)
         .addField("Info", `${client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
-         .setFooter("weXen", client.user.avatarURL)
+  
    message.channel.send({embed: help})
   }
 
@@ -99,7 +99,6 @@ client.on("message", message => {
     .addField("Server", message.guild.name,true)
     .addField("Member", message.author, true)
     .addField("Channel",message.channel)
-    .setFooter("weXen", client.user.avatarURL)
     .setColor(config.embed_color)
     message.guild.owner.send({embed});
     message.reply('Hey! Don\'t do that!')
