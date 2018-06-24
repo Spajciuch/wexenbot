@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
    .setColor(config.embed_color)
    .addField("Name", message.guild.name, true)
    .addField("Owner", `${message.guild.owner}`, true)
-   .addField("Region", message.guild.region.replace('eu-central', 'Europa Centralna'), true)
+   .addField("Region", message.guild.region, true)
    .addField("Channels", message.guild.channels.size, true)
    .addField("Users", message.guild.memberCount, true)
    .addField("Humans", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
@@ -27,6 +27,6 @@ module.exports.run = async (client, message, args) => {
 
 }
 module.exports.help = {
-  name: "serverinfo",
+  name: "guildinfo",
   category: "info"
 }
