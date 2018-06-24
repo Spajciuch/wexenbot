@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-module.exports.run = async (client, message, args, kick) => {
+module.exports.run = async (client, message, args, config) => {
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
       return message.reply("You don't have enough permissions!");
 
