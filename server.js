@@ -112,7 +112,7 @@ client.on("message", message => {
 
 client.login(process.env.TOKEN)
 
-Music.start(client, {
+const music = new Music(client, {
    prefix: config.prefix,
   youtubeKey: config.yt,
   embedColor: 16750361,
