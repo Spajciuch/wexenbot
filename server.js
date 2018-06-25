@@ -121,5 +121,5 @@ const music = new Music(client, {
   botAdmins: [316226442721755137, 367390191721381890],
   clearOnLeave: true,
   disableVolume: true,
-  djRole: "dj"
+  djRole: "everyone"
 });
