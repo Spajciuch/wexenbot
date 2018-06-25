@@ -35,7 +35,7 @@ switch (new Date().getDay()) {
 }
 
 function configgen(guild) {
-fs.writeFile("./configs/" + guild.id + ".json", '{\n "jest": "1",\n "admin": true,\n "prefix": "?"\n}')
+fs.appendFile("./configs/" + guild.id + ".json", '{\n "jest": "1",\n "admin": true,\n "prefix": "?"\n}')
 }
 
 client.on("ready", () => {
