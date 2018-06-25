@@ -77,7 +77,6 @@ if (message.author.bot) return;
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
 
-  let prefix = prefixes
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
     let commandfile = client.commands.get(cmd.slice(prefix.length));
