@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const Music = require('discord.js-musicbot-addon-v2');
+var ffmpeg = require('ffmpeg');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
