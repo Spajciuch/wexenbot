@@ -18,7 +18,7 @@
     "youtube-playlist-info": "^1.1.2",
     "node-opus": "^0.3.0",
     "ffmpeg": "^0.0.4",
-    "ytsearcher: : 1.0.3""
+    "ytsearcher: "1.0.3"
   },
   "engines": {
     "node": "9.7.1"
