@@ -8,15 +8,15 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "discord.js": "^11.3.2",
-     "quick.hook": "^1.4.2",
-    "text-meme" : "^2.3.0",
+    "discord.js": "11.3.2",
+     "quick.hook": "1.4.2",
+    "text-meme" : "2.3.0",
     "ms" : "^2.1.1",
     "discord.js-musicbot-addon-v2": "1.10.4",
-    "ytdl-core": "^0.20.4",
-    "youtube-playlist-info": "^1.1.2",
-    "node-opus": "^0.3.0",
-    "ffmpeg": "^0.0.4",
+    "ytdl-core": "0.20.4",
+    "youtube-playlist-info": "1.1.2",
+    "node-opus": "0.3.0",
+    "ffmpeg": "0.0.4",
     "ytsearcher": "1.0.3"
   },
   "engines": {
