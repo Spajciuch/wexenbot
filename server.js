@@ -118,7 +118,6 @@ Music.start(client, {
   embedColor: 16750361,
   enableQueueStat: true,
   botAdmins: [316226442721755137, 367390191721381890],
-  clearInvoker: true,
   clearOnLeave: true,
   disableVolume: true
 });
