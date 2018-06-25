@@ -12,7 +12,6 @@ module.exports.run = async (client, message, args, config) => {
 	
     const embed = new Discord.RichEmbed()
 		.setColor(config.embed_color)
-		.setThumbnail(user.avatarURL)
 		.setTitle(`${user.username}#${user.discriminator}`)
 		.addField("ID:", `${user.id}`, true)
 		.addField("Nickname:", `${member.nickname !== null ? `${member.nickname}` : 'None'}`, true)
