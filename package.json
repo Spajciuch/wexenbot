@@ -14,7 +14,7 @@
     "ms" : "^2.1.1",
     "discord.js-musicbot-addon": "^12.0.6",
     "discord.js-musicbot-addon-pl": "^1.0.2",
-    "ytsearcher": "1.1.0",
+    "ytsearcher": "1.0.0",
     "ytdl-core": "^0.20.4",
     "youtube-playlist-info": "^1.1.2",
     "node-opus": "^0.3.0",
