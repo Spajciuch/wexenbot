@@ -60,7 +60,7 @@ client.on("message", async message => {
   if(!prefixes[message.guild.id]){
     prefixes[message.guild.id] = {
       prefixes: config.prefix
-    };
+    }
 if (message.author.bot) return;
   if (message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
