@@ -3,7 +3,7 @@
 weXen is a moderation and administration bot using [discord.js library](https://discord.js.org).
 ### To do
 - [x] mute command
-- [ ] tempmute command
+- [x] tempmute command
 - [x] unmute command
 - [ ] custom prefix
 - [x] fix kick command
