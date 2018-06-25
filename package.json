@@ -13,7 +13,6 @@
     "text-meme" : "^2.3.0",
     "ms" : "^2.1.1",
     "discord.js-musicbot-addon-v2": "1.10.4",
-    "discord.js-musicbot-addon-pl": "^1.0.2",
     "ytdl-core": "^0.20.4",
     "youtube-playlist-info": "^1.1.2",
     "node-opus": "^0.3.0",
