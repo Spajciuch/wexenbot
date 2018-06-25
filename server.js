@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const Music = require('discord.js-musicbot-addon-pl');
+const Music = require('discord.js-musicbot-addon');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
