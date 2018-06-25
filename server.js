@@ -65,7 +65,7 @@ if (message.author.bot) return;
 
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
-    let commandfile = client.commands.get(cmd.slice(prefix.length));
+    let commandfile = client.commands.get(cmd.slice(config.prefix.length));
 if(commandfile) commandfile.run(client, message, args, config);
   if(command == 'help'){
     fs.readdir(`./commands/`,(err, files)=>{
