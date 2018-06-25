@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const Music = require('discord.js-musicbot-addon-v2');
-const editJsonFile = require("edit-json-file");
 var ffmpeg = require('ffmpeg');
 const config = require('./config.json')
 const client = new Discord.Client()
@@ -34,9 +33,6 @@ switch (new Date().getDay()) {
       day = "w Sobotę";
 }
 
-function configgen(guild) {
-fs.appendFile("./configs/" + guild.id + ".json", '{\n "jest": "1",\n "admin": true,\n "prefix": "?"\n}')
-}
 
 client.on("ready", () => {
     const channelgeneral = client.channels.find("id", "460167148883410964");
@@ -62,15 +58,6 @@ fs.readdir(`./commands/`,(err, files)=>{
 })
 client.on("message", async message => {
   const dm = message.channel.type === 'dm'
-  if(!dm) {
-  file = editJsonFile(`${message.guild.id}.json`, {
-    autosave: true});
-  if(file.get("jest") !== "1") {
-     console.log('serwer bez configu');
-    configgen(message.guild)
-    message.channel.send('I\'ve generated a config for you! Options soon!')
-     }
-  }
 if (message.author.bot) return;
   if (message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
