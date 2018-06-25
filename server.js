@@ -32,6 +32,7 @@ switch (new Date().getDay()) {
   case 6:
       day = "w Sobotę";
 }
+
 client.on("ready", () => {
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
@@ -55,13 +56,18 @@ fs.readdir(`./commands/`,(err, files)=>{
   })
 })
 client.on("message", async message => {
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  if(!prefixes[message.guild.id]){
+    prefixes[message.guild.id] = {
+      prefixes: config.prefix
+    };
 if (message.author.bot) return;
   if (message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
 
-  let prefix = config.prefix
+  let prefix = prefixes
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
     let commandfile = client.commands.get(cmd.slice(prefix.length));
