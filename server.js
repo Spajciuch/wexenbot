@@ -97,13 +97,14 @@ if (message.author.bot) return;
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
      .then(snapshot => oprefix = snapshot.val());
   if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return;
+  if(message.content.startsWith(config.prefix) {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+} else {
+      const args = message.content.slice(oprefix.length).trim().split(/ +/g);   
+}
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
-
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-    let commandfile = client.commands.get(cmd.slice(config.prefix.length));
+    let commandfile = client.commands.get(command);
 if(commandfile) commandfile.run(client, message, args, config);
   if(command == 'help'){
     fs.readdir(`./commands/`,(err, files)=>{
