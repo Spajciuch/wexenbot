@@ -5,6 +5,20 @@ const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
 client.commands = new Discord.Collection()
+
+var firebase = require('firebase')
+
+var config2 = {
+  apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
+  authDomain: "wexenbot.firebaseapp.com",
+  databaseURL: "https://wexenbot.firebaseio.com/",
+  projectId: "wexenbot",
+  storageBucket: "wexenbot.appspot.com",
+  messagingSenderId: "158046768135"
+};
+firebase.initializeApp(config2);
+var database = firebase.database();
+
 var d = new Date()
 var hour = d.getHours() +2
 var minute = d.getMinutes()
@@ -57,6 +71,27 @@ fs.readdir(`./commands/`,(err, files)=>{
 })
 client.on("message", async message => {
   const dm = message.channel.type === 'dm'
+   if(!dm) {
+       database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
+     .then(snapshot => {
+       if(snapshot.val() !== '1') {
+                firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: true,
+    prefix: '>',
+    jest: '1'
+  });
+  message.channel.send('Prefix generated, options soon!')
+          }
+       })
+    .catch(error => {
+             firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: true,
+    prefix: '>',
+    jest: '1'
+  });
+  message.channel.send('Prefix generated, options soon!')
+       })
+}
 if (message.author.bot) return;
   if (message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
