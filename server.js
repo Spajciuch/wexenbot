@@ -5,15 +5,17 @@ const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
 var firebase = require('firebase')
-var admin = require("firebase-admin");
 
-var serviceAccount = require("./wexenbot-firebase-adminsdk-3kvrh-d4d644158e.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://wexenbot.firebaseio.com"
-});
-var db = admin.database();
+var config2 = {
+  apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
+  authDomain: "wexenbot.firebaseapp.com",
+  databaseURL: "https://wexenbot.firebaseio.com/",
+  projectId: "wexenbot",
+  storageBucket: "wexenbot.appspot.com",
+  messagingSenderId: "158046768135"
+};
+firebase.initializeApp(config2);
+var database = firebase.database();
 
 client.commands = new Discord.Collection()
 var d = new Date()
@@ -95,7 +97,7 @@ if(commandfile) commandfile.run(client, message, args, config);
   }
 
 if(command == 'dtb'){
-    firebase.database().ref(args.join(" ")).once('value').then(function (snapshot) {
+    database.ref(args.join(" ")).once('value').then(function (snapshot) {
       message.channel.send(snapshot.val())
     })
 }
