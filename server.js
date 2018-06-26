@@ -97,7 +97,7 @@ var database = firebase.database();
    }
  
  if(command == 'dtb'){
-+    database.ref(args.join(" ")).once('value').then(function (snapshot) {
++    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value').then(function (snapshot) {
        message.channel.send(snapshot.val())
      })
  }
