@@ -127,7 +127,7 @@ if(commandfile) commandfile.run(client, message, args, config);
 
                         if(command == 'test') {
                           database.ref(`/ustawienia/${message.guild.id}`).once('value')
-                           .then(value => console.log(value));
+                           .then(value => console.log(value.ChildrenNode));
                         }
                         
 
