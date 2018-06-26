@@ -97,7 +97,7 @@ if (message.author.bot) return;
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
      .then(snapshot => oprefix = snapshot.val());
   if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return;
-  if(message.content.startsWith(config.prefix) {
+  if(message.content.startsWith(config.prefix)) {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 } else {
       const args = message.content.slice(oprefix.length).trim().split(/ +/g);   
