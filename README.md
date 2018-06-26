@@ -6,6 +6,7 @@ weXen is a moderation and administration bot using [discord.js library](https://
 - [x] tempmute command
 - [x] unmute command
 - [ ] custom prefix
+CUSTOM PREFIX IS 90% COMPLETE - WE ONLY NEED TO ADD A FEW TWEAKS!
 - [x] fix kick command
 - [x] prepare readme
 ### Contact 
