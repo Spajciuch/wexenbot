@@ -72,7 +72,7 @@ var database = firebase.database();
    if(!dm) {
        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
      .then(snapshot => {
-       if(snapshot.val() !== '1' {
+       if(snapshot.val() !== '1') {
                 firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: true,
     prefix: '>',
