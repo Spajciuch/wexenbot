@@ -4,6 +4,18 @@ var ffmpeg = require('ffmpeg');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
+var dtb = {
+    apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM",
+    authDomain: "wexenbot.firebaseapp.com",
+    databaseURL: "https://wexenbot.firebaseio.com",
+    projectId: "wexenbot",
+    storageBucket: "wexenbot.appspot.com",
+    messagingSenderId: "168114377721"
+  };
+
+firebase.initializeApp(dtb);
+var db = firebase.database();
+
 client.commands = new Discord.Collection()
 var d = new Date()
 var hour = d.getHours() +2
@@ -34,6 +46,8 @@ switch (new Date().getDay()) {
 }
 
 client.on("ready", () => {
+    db.ref("TEST").once('value').then(function (snapshot) {
+      message.channel.send(snapshot.val())
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
     client.user.setActivity(">help", {type: "LISTENING"});
