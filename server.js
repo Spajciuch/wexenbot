@@ -80,7 +80,7 @@ client.on("message", async message => {
     prefix: '>',
     jest: '1'
   });
-  message.channel.send('Prefix generated, options soon!')
+  message.channel.send('Config generated, options soon!')
           }
        })
     .catch(error => {
@@ -89,7 +89,7 @@ client.on("message", async message => {
     prefix: '>',
     jest: '1'
   });
-  message.channel.send('Prefix generated, options soon!')
+  message.channel.send('Config generated, options soon!')
        })
 }
 if (message.author.bot) return;
