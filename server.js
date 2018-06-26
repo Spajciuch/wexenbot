@@ -90,15 +90,29 @@ var database = firebase.database();
   message.channel.send('Prefix generated, options soon!')
        })
    }
- if (message.author.bot) return;
-   if (message.content.indexOf(config.prefix) !== 0) return;
-   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  
+   if (message.author.bot) return;
+  
+  if(!dm) {
+    database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
+     .then(snapshot => {
+    if(!message.content.startsWith(config.prefix) && !message.content.startsWith(snapshot.val())) return;
+     if(message.content.startsWith(config.prefix)) {
+       const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
    const command = args.shift().toLowerCase();
-   if(message.author.bot) return;
- 
-   let messageArray = message.content.split(" ");
+         let messageArray = message.content.split(" ");
    let cmd = messageArray[0];
-     let commandfile = client.commands.get(cmd.slice(config.prefix.length));
+           let commandfile = client.commands.get(cmd.slice(config.prefix.length));
+     } else {
+      const args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
+   const command = args.shift().toLowerCase();
+         let messageArray = message.content.split(" ");
+   let cmd = messageArray[0];
+           let commandfile = client.commands.get(cmd.slice(snapshot.val().length));
+     }
+    })
+  }
+
  if(commandfile) commandfile.run(client, message, args, config);
    if(command == 'help'){
      fs.readdir(`./commands/`,(err, files)=>{
