@@ -101,7 +101,7 @@ if(commandfile) commandfile.run(client, message, args, config);
 if(command == 'dtb'){
  db.ref("TEST").once('value').then(function (snapshot) {
       message.channel.send(snapshot.val())   
-}
+}}
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
   client.user.setUsername(args.join(" "))
