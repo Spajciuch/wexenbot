@@ -113,6 +113,8 @@ var database = firebase.database();
          let commandfile = client.commands.get(command);
          if (commandfile) commandfile.run(client, message, args, config);
      }
+    })
+  }
  });
  //@everyone
  client.on("message", message => {
