@@ -131,6 +131,7 @@ if(commandfile) commandfile.run(client, message, args, config);
                         }
                         
 if(command == 'settings') {
+  if(args[0] == "") {
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
   .then(prefix => {
     database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
@@ -139,6 +140,28 @@ if(command == 'settings') {
 Admin commands: ${admin.val()}`)
     }); 
   });
+  } else if(args[0] == 'prefix') {
+    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
+    if(args[1] == '') return message.reply('You didn\'t specify a prefix!')
+    firebase.database().ref('ustawienia/' + message.guild.id).set({
+    prefix: args.shift()
+  });
+  } else if(args[0] == 'admin') {
+   if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
+    if(args[1] == 'on') {
+          firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: true
+  });
+    } else if(args[1] == 'off') {
+          firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: false
+  });
+    } else {
+      message.reply('That\'s not a valid option!');
+    }
+  } else {
+   message.reply('That\'s not a valid option!');
+  }
 }
                         
                         
