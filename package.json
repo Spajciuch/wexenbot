@@ -1,9 +1,9 @@
 {
   "name": "wexenbot",
   "version": "1.0.0",
-  "description": "Bot neoney i Spyte",
+  "description": "Neoney's & Spyte's bot",
   "main": "server.js",
-  "author": "neoney i Spyte",
+  "author": "Neoney & Spyte",
   "scripts": {
     "start": "node server.js"
   },
