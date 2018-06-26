@@ -110,8 +110,6 @@ var database = firebase.database();
    let cmd = messageArray[0];
            let commandfile = client.commands.get(cmd.slice(snapshot.val().length));
      }
-    })
-  }
 
  if(commandfile) commandfile.run(client, message, args, config);
    if(command == 'help'){
@@ -144,6 +142,8 @@ var database = firebase.database();
    message.channel.send("Done")
   
    }
+         })
+  }
  });
  //@everyone
  client.on("message", message => {
