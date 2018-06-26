@@ -116,7 +116,7 @@ client.login(process.env.TOKEN)
 
 const music = new Music(client, {
    prefix: config.prefix,
-  youtubeKey: config.yt,
+  youtubeKey: config.google,
   embedColor: 16750361,
   enableQueueStat: true,
   botAdmins: [316226442721755137, 367390191721381890],
