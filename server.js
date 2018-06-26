@@ -102,16 +102,18 @@ var database = firebase.database();
    const command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
    let cmd = messageArray[0];
-           let commandfile = client.commands.get(cmd.slice(config.prefix.length));
+           let commandfile = client.commands.get(command);
+       if(commandfile) commandfile.run(client, message, args, config);
      } else {
       const args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
    const command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
    let cmd = messageArray[0];
            let commandfile = client.commands.get(command);
+       if(commandfile) commandfile.run(client, message, args, config);
      }
 
- if(commandfile) commandfile.run(client, message, args, config);
+
    if(command == 'help'){
      fs.readdir(`./commands/`,(err, files)=>{
    if(err) console.log(err)
