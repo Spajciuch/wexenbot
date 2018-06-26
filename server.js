@@ -97,10 +97,11 @@ client.on("message", async message => {
 if (message.author.bot) return;
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
      .then(snapshot => oprefix = snapshot.val());
-  if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return;
+  if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return console.log('returned');
   if(message.content.startsWith(config.prefix)) {
   args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-} else {
+}
+if(message.content.startsWith(oprefix)) {
   args = message.content.slice(oprefix.length).trim().split(/ +/g);   
 }
   const command = args.shift().toLowerCase();
