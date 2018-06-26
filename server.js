@@ -7,7 +7,7 @@ const fs = require('fs')
 var firebase = require('firebase')
 var admin = require("firebase-admin");
 
-var serviceAccount = require("wexenbot-firebase-adminsdk-3kvrh-d4d644158e.json");
+var serviceAccount = require("./wexenbot-firebase-adminsdk-3kvrh-d4d644158e.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
