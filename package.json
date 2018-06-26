@@ -19,7 +19,8 @@
     "node-opus": "0.3.0",
     "ffmpeg": "^0.0.4",
     "ytsearcher": "1.0.3",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "fortnite": "4.1.1"
   },
   "engines": {
     "node": "9.7.1"
