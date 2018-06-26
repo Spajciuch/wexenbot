@@ -67,6 +67,13 @@ fs.readdir(`./commands/`,(err, files)=>{
     let props = require(`./commands/${f}`)
   })
 })
+
+function ustawienia(message) {
+    database.ref("/ustawienia/" + message.guild.id).once('value').then(function (snapshot) {
+      return snapshot;
+    })
+}
+
 client.on("message", async message => {
   const dm = message.channel.type === 'dm'
 if (message.author.bot) return;
@@ -97,9 +104,7 @@ if(commandfile) commandfile.run(client, message, args, config);
   }
 
 if(command == 'dtb'){
-    database.ref(args.join(" ")).once('value').then(function (snapshot) {
-      message.channel.send(snapshot.val())
-    })
+console.log(ustawienia(message));
 }
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
