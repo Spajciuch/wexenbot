@@ -98,19 +98,19 @@ var database = firebase.database();
      .then(snapshot => {
     if(!message.content.startsWith(config.prefix) && !message.content.startsWith(snapshot.val())) return;
      if(message.content.startsWith(config.prefix)) {
-       const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-   const command = args.shift().toLowerCase();
+         let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+         let command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
-   let cmd = messageArray[0];
-           let commandfile = client.commands.get(command);
-       if(commandfile) commandfile.run(client, message, args, config);
+         let cmd = messageArray[0];
+         let commandfile = client.commands.get(command);
+         if (commandfile) commandfile.run(client, message, args, config);
      } else {
-      const args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
-   const command = args.shift().toLowerCase();
+         let args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
+         let command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
-   let cmd = messageArray[0];
-           let commandfile = client.commands.get(command);
-       if(commandfile) commandfile.run(client, message, args, config);
+         let cmd = messageArray[0];
+         let commandfile = client.commands.get(command);
+         if (commandfile) commandfile.run(client, message, args, config);
      }
 
 
