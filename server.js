@@ -71,6 +71,7 @@ fs.readdir(`./commands/`,(err, files)=>{
 })
 client.on("message", async message => {
   var oprefix = "";
+  var args = "";
   const dm = message.channel.type === 'dm'
    if(!dm) {
        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
@@ -98,9 +99,9 @@ if (message.author.bot) return;
      .then(snapshot => oprefix = snapshot.val());
   if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return;
   if(message.content.startsWith(config.prefix)) {
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 } else {
-      const args = message.content.slice(oprefix.length).trim().split(/ +/g);   
+  args = message.content.slice(oprefix.length).trim().split(/ +/g);   
 }
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
