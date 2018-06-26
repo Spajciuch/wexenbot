@@ -1,18 +1,7 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
-    var firebase = require('firebase')
-
-var config2 = {
-  apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
-  authDomain: "wexenbot.firebaseapp.com",
-  databaseURL: "https://wexenbot.firebaseio.com/",
-  projectId: "wexenbot",
-  storageBucket: "wexenbot.appspot.com",
-  messagingSenderId: "158046768135"
-};
-firebase.initializeApp(config2);
-var database = firebase.database();
-  database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+var firebase = require('firebase')
+database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(admin => { if(admin.val() == false) return message.reply('Module is off.')
 })
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
