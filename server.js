@@ -5,8 +5,7 @@ const Discord = require('discord.js')
  const client = new Discord.Client()
  const fs = require('fs')
  var firebase = require('firebase')
- 
- 
+
 var config2 = {
   apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
   authDomain: "wexenbot.firebaseapp.com",
@@ -91,30 +90,46 @@ var database = firebase.database();
   message.channel.send('Prefix generated, options soon!')
        })
    }
+ if (message.author.bot) return;
+   if (message.content.indexOf(config.prefix) !== 0) return;
+   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+   const command = args.shift().toLowerCase();
+   if(message.author.bot) return;
+ 
+   let messageArray = message.content.split(" ");
+   let cmd = messageArray[0];
+     let commandfile = client.commands.get(cmd.slice(config.prefix.length));
+ if(commandfile) commandfile.run(client, message, args, config);
+   if(command == 'help'){
+     fs.readdir(`./commands/`,(err, files)=>{
+   if(err) console.log(err)
+   let jsfile = files.filter(f => f.split(".").pop() == "js")
+ 
+    let help = new Discord.RichEmbed()
+         .setAuthor("List of Commands")
+         .setColor(config.embed_color)
+         .addField("Total commands: ", jsfile.length - 1)
+         .addField("Music", '`musichelp`')
+         .addField("Info", `${client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
+         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
+         .addField("Fun", `${client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
+    message.channel.send({embed: help})
+     })
+   }
+ 
+ if(command == 'dtb'){
+    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value')
+     .then(snapshot => message.channel.send(snapshot.val()))
+    .catch(error => message.channel.send('Brak takiego pliku'))
+    
+ }
+      if(command == 'username') {
+   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
+   client.user.setUsername(args.join(" "))
+   console.log(`Zmieniono mój nick`)
+   message.channel.send("Done")
   
-   if (message.author.bot) return;
-  
-  if(!dm) {
-    database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
-     .then(snapshot => {
-    if(!message.content.startsWith(config.prefix) && !message.content.startsWith(snapshot.val())) return;
-     if(message.content.startsWith(config.prefix)) {
-         let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-         let command = args.shift().toLowerCase();
-         let messageArray = message.content.split(" ");
-         let cmd = messageArray[0];
-         let commandfile = client.commands.get(cmd.slice(config.prefix.length));
-         if (commandfile) commandfile.run(client, message, args, config);
-     } else {
-         let args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
-         let command = args.shift().toLowerCase();
-         let messageArray = message.content.split(" ");
-         let cmd = messageArray[0];
-         let commandfile = client.commands.get(cmd.slice(snapshot.val().length));
-         if (commandfile) commandfile.run(client, message, args, config);
-     }
-    })
-  }
+   }
  });
  //@everyone
  client.on("message", message => {
