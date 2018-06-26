@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
 var firebase = require('firebase')
-database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(admin => { if(admin.val() == false) return message.reply('Module is off.')
 })
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
