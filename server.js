@@ -69,7 +69,7 @@ fs.readdir(`./commands/`,(err, files)=>{
 })
 
 function ustawienia(message, args) {
-    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value').then(function (snapshot) {
+    database.ref(`/ustawienia/${message.guild.id}/${args.join(" ")}`).once('value').then(function (snapshot) {
       return snapshot;
     })
 }
