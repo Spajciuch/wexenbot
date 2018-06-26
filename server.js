@@ -70,7 +70,7 @@ fs.readdir(`./commands/`,(err, files)=>{
 
 function ustawienia(message, args) {
     database.ref("/ustawienia/" + message.guild.id + "/" + args[0]).once('value').then(function (snapshot) {
-      return snapshot;
+      return snapshot.val;
     })
 }
 
@@ -104,7 +104,7 @@ if(commandfile) commandfile.run(client, message, args, config);
   }
 
 if(command == 'dtb'){
-console.log(ustawienia(message, args));
+message.channel.send(ustawienia(message, args));
 }
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
