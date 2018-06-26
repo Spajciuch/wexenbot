@@ -46,8 +46,7 @@ switch (new Date().getDay()) {
 }
 
 client.on("ready", () => {
-    db.ref("TEST").once('value').then(function (snapshot) {
-      message.channel.send(snapshot.val())
+  
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
     client.user.setActivity(">help", {type: "LISTENING"});
