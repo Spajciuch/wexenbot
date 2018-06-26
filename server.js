@@ -97,11 +97,9 @@ if(commandfile) commandfile.run(client, message, args, config);
   }
 
 if(command == 'dtb'){
-  db.ref('users/' + '123456789').set({
-    username: "lol",
-    email: "xD",
-    profile_picture : "https://cdn.discordapp.com/avatars/367390191721381890/4be7312f80a9cebd6d631539345898ff.png?size=2048"
-  });
+    firebase.database().ref(args.join(" ")).once('value').then(function (snapshot) {
+      message.channel.send(snapshot.val())
+    })
 }
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
