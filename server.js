@@ -70,7 +70,7 @@ fs.readdir(`./commands/`,(err, files)=>{
   })
 })
 client.on("message", async message => {
-  let oprefix
+  var oprefix = "";
   const dm = message.channel.type === 'dm'
    if(!dm) {
        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
