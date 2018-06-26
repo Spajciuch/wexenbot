@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
+    var firebase = require('firebase')
+await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+.then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
     if (!message.member.hasPermission("KICK_MEMBERS", false, true, true))
       return message.reply("You don't have enough permissions!");
-
     let member = message.mentions.members.first();
     if (!member)
       return message.reply("You have to mention someone.");
@@ -30,6 +32,7 @@ member.kick(reason)
   }
 };
 message.channel.send({ embed });
+                     })
 }
 module.exports.help = {
   name: "kick",
