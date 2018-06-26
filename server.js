@@ -131,7 +131,7 @@ if(commandfile) commandfile.run(client, message, args, config);
                         }
                         
 if(command == 'settings') {
-  if(args[0] == "") {
+  if(!args[0]) {
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
   .then(prefix => {
     database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
