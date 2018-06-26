@@ -69,9 +69,9 @@ fs.readdir(`./commands/`,(err, files)=>{
 })
 
 function ustawienia(message, args) {
-    database.ref(`/ustawienia/423545059666034689/prefix`).once('value').then(function (snapshot) {
+   firebase.database().ref("/ustawienia/423545059666034689/prefix").once('value').then(function (snapshot) {
       return snapshot.val();
-    })
+})
 }
 
 client.on("message", async message => {
