@@ -139,7 +139,7 @@ if(command == 'settings') {
     .then(jest => {
   if(!args[0]) {
     message.channel.send(`Prefix: ${prefix.val()}
-Admin commands: ${admin.val()}
+Util commands: ${admin.val()}
 Config version: ${jest.val()}`)
   } else if(args[0] == 'prefix') {
     if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
@@ -150,7 +150,7 @@ Config version: ${jest.val()}`)
     jest: jest.val(),
     admin: admin.val()
   });
-  } else if(args[0] == 'admin') {
+  } else if(args[0] == 'util') {
    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
     if(args[1] == 'on') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
