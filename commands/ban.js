@@ -30,9 +30,9 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
   "thumbnail": {
     "url": message.mentions.members.first().user.avatarURL
   }
-    })
 };
 message.channel.send({ embed });
+                     })
 }
 module.exports.help = {
   name: "ban",
