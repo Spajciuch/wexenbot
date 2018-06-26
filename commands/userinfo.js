@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args, config) => {
 		.addField("Created At:", `${moment.utc(user.createdAt).format('dd, MM Do YYYY')}`, true)
 		.addField("Joined Server:", `${moment.utc(member.joinedAt).format('dd, MM Do YYYY')}`, true)
 		.addField("Bot:", `${user.bot}`, true)
-		.addField("Status:", `${user.presence.status}`, true)
+		.addField("Status:", `${user.presence.status.replace("dnd", "Do Not Distrub")}`, true)
 		.addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
 		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
 		.setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
