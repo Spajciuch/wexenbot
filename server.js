@@ -97,10 +97,10 @@ var database = firebase.database();
    }
  
  if(command == 'dtb'){
-    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value').then(function (snapshot) {
-       message.channel.send(snapshot.val())
-     })
+    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value')
+     .then(snapshot => message.channel.send(snapshot.val()))
     .catch(error => message.channel.send('Brak takiego pliku'))
+    
  }
       if(command == 'username') {
    if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
