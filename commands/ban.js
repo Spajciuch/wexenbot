@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
 var firebase = require('firebase')
 await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
-.then(admin => { if(admin.val() == false) return message.reply('Module is off.') })
+.then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
       return message.reply("<a:banhammer:460519287191240714> You don't have enough permissions!");
 
@@ -30,6 +30,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
   "thumbnail": {
     "url": message.mentions.members.first().user.avatarURL
   }
+    })
 };
 message.channel.send({ embed });
 }
