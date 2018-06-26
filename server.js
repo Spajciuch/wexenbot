@@ -73,7 +73,7 @@ client.on("message", async message => {
   var oprefix = "";
   var args = "";
   const dm = message.channel.type === 'dm'
-   if(!dm) {
+    if(dm) return;
        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
      .then(snapshot => {
        if(snapshot.val() !== '1') {
@@ -93,10 +93,10 @@ client.on("message", async message => {
   });
   message.channel.send('Config generated, options soon!')
        })
-}
+
 if (message.author.bot) return;
   database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
-     .then(snapshot => oprefix = snapshot.val());
+     .then(snapshot => {oprefix = snapshot.val()
   if (!message.content.startsWith(config.prefix) && !message.content.startsWith(oprefix)) return console.log('returned');
   if(message.content.startsWith(config.prefix)) {
   args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -133,6 +133,7 @@ if(commandfile) commandfile.run(client, message, args, config);
   message.channel.send("Done")
  
   }
+                       });
 });
 //@everyone
 client.on("message", message => {
