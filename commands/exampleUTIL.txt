@@ -1,0 +1,12 @@
+const Discord = require('discord.js')
+module.exports.run = async (client, message, args, config) => {
+var firebase = require('firebase')
+await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+.then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
+//commands
+})
+}
+module.exports.help = {
+  name: "name",
+  category: "cat"
+}
