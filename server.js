@@ -150,6 +150,7 @@ Config version: ${jest.val()}`)
     jest: jest.val(),
     admin: admin.val()
   });
+    message.channel.send(`New prefix is \`${args.join(" ")}\``);
   } else if(args[0] == 'util') {
    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
     if(args[1] == 'on') {
@@ -158,12 +159,14 @@ Config version: ${jest.val()}`)
     jest: jest.val(),
     prefix: prefix.val()
   });
+      message.channel.send('Util commands are now `on`!');
     } else if(args[1] == 'off') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: false,
     jest: jest.val(),
     prefix: prefix.val()
   });
+            message.channel.send('Util commands are now `off`!');
     } else {
       message.reply('That\'s not a valid option!');
     }
