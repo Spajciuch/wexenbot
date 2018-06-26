@@ -5,14 +5,14 @@ const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
 var firebase = require('firebase')
-var dtb = {
-    apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM",
-    authDomain: "wexenbot.firebaseapp.com",
-    databaseURL: "https://wexenbot.firebaseio.com",
-    projectId: "wexenbot",
-    storageBucket: "wexenbot.appspot.com",
-    messagingSenderId: "168114377721"
-  };
+var admin = require("firebase-admin");
+
+var serviceAccount = require("wexenbot-firebase-adminsdk-3kvrh-d4d644158e.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://wexenbot.firebaseio.com"
+});
 
 firebase.initializeApp(dtb);
 var db = firebase.database();
