@@ -125,6 +125,11 @@ if(commandfile) commandfile.run(client, message, args, config);
     })
   }
 
+                        if(command == 'test') {
+                          database.ref(`/ustawienia/${message.guild.id}`).once('value')
+                           .then(value => console.log(value));
+                        }
+                        
 
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
