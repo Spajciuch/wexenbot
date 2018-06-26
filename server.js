@@ -13,9 +13,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://wexenbot.firebaseio.com"
 });
-
-firebase.initializeApp(dtb);
-var db = firebase.database();
+var db = admin.database();
 
 client.commands = new Discord.Collection()
 var d = new Date()
