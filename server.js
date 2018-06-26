@@ -130,7 +130,18 @@ if(commandfile) commandfile.run(client, message, args, config);
                            .then(value => console.log(value.node_.ChildrenNode));
                         }
                         
-
+if(command == 'settings') {
+  database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
+  .then(prefix => {
+    database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+    .then(admin => {
+      message.channel.send(`Prefix: ${prefix.val()}
+Admin commands: ${admin.val()}`)
+    }); 
+  });
+}
+                        
+                        
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
   client.user.setUsername(args.join(" "))
