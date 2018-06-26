@@ -20,7 +20,8 @@
     "ffmpeg": "^0.0.4",
     "ytsearcher": "1.0.3",
     "moment": "^2.22.2",
-    "fortnite": "4.1.1"
+    "fortnite": "4.1.1",
+    "google":"2.1.0"
   },
   "engines": {
     "node": "9.7.1"
