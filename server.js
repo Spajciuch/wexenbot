@@ -103,14 +103,14 @@ var database = firebase.database();
          let command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
          let cmd = messageArray[0];
-         let commandfile = client.commands.get(command);
+         let commandfile = client.commands.get(cmd.slice(config.prefix.length));
          if (commandfile) commandfile.run(client, message, args, config);
      } else {
          let args = message.content.slice(snapshot.val().length).trim().split(/ +/g);
          let command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
          let cmd = messageArray[0];
-         let commandfile = client.commands.get(command);
+         let commandfile = client.commands.get(cmd.slice(snapshot.val().length));
          if (commandfile) commandfile.run(client, message, args, config);
      }
     })
