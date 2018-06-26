@@ -3,7 +3,6 @@ module.exports.run = async (client, message, args, config) => {
 var firebase = require('firebase')
 firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(admin => { if(admin.val() == false) return message.reply('Module is off.')
-})
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
       return message.reply("<a:banhammer:460519287191240714> You don't have enough permissions!");
 
@@ -34,6 +33,7 @@ firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 };
 message.channel.send({ embed });
 }
+      })
 module.exports.help = {
   name: "ban",
   category: "util"
