@@ -1,5 +1,8 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
+  var firebase = require('firebase')
+await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
+.then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
   if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You aren't permitted to do that");
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!tomute) return message.reply("Couldn't find user");
@@ -24,7 +27,7 @@ module.exports.run = async (client, message, args, config) => {
 tomute.removeRole(muterole.id);
 message.channel.send(`<@${tomute.id}> has been unmuted!`);
 
-
+                     })
 }
 
 exports.conf = {
