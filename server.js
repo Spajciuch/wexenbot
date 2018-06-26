@@ -112,40 +112,6 @@ var database = firebase.database();
          let commandfile = client.commands.get(command);
          if (commandfile) commandfile.run(client, message, args, config);
      }
-
-
-   if(command == 'help'){
-     fs.readdir(`./commands/`,(err, files)=>{
-   if(err) console.log(err)
-   let jsfile = files.filter(f => f.split(".").pop() == "js")
- 
-    let help = new Discord.RichEmbed()
-         .setAuthor("List of Commands")
-         .setColor(config.embed_color)
-         .addField("Total commands: ", jsfile.length - 1)
-         .addField("Music", '`musichelp`')
-         .addField("Info", `${client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
-         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
-         .addField("Fun", `${client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
-    message.channel.send({embed: help})
-     })
-   }
- 
- if(command == 'dtb'){
-    database.ref(`/ustawienia/${message.guild.id}/${args[0]}`).once('value')
-     .then(snapshot => message.channel.send(snapshot.val()))
-    .catch(error => message.channel.send('Brak takiego pliku'))
-    
- }
-      if(command == 'username') {
-   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
-   client.user.setUsername(args.join(" "))
-   console.log(`Zmieniono mój nick`)
-   message.channel.send("Done")
-  
-   }
-         })
-  }
  });
  //@everyone
  client.on("message", message => {
