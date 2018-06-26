@@ -108,7 +108,7 @@ var database = firebase.database();
    const command = args.shift().toLowerCase();
          let messageArray = message.content.split(" ");
    let cmd = messageArray[0];
-           let commandfile = client.commands.get(cmd.slice(snapshot.val().length));
+           let commandfile = client.commands.get(command);
      }
 
  if(commandfile) commandfile.run(client, message, args, config);
