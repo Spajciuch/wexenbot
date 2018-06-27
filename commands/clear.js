@@ -10,7 +10,7 @@ return message.reply("Choose a number from 2 to 100.");
 message.channel.bulkDelete(args[0])
 .catch(error => message.reply('sorry, but couldn\'t delete: ' + error.message));
 message.channel.send('Cleared `' + args[0] + '` messages.')
-  .them(message => message.delete(5000));
+  .then(message => message.delete(5000));
 })
 }
 module.exports.help = {
