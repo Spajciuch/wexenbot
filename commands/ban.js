@@ -22,10 +22,6 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
     const embed = {
   "title": "Banned!",
   "color": 16750361,
-  "footer": {
-    "icon_url": "https://cdn.discordapp.com/avatars/460153151073288202/e6fb8a855d1a0646bf790cfe3022e69a.png?size=2048",
-    "text": "wexen"
-  },
   "thumbnail": {
     "url": message.mentions.members.first().user.avatarURL
   },
