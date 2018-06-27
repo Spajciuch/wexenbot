@@ -2,7 +2,7 @@
 const Discord = require("discord.js");
 module.exports.run = async (client, message, args, config) => {
 const Client = require('fortnite');
-const fortnite = new Client('4976fc40-95c4-4e91-a825-8b49dc657fbd');
+const fortnite = new Client('b78afa6b-06fa-464d-b76d-bd84db5c465d');
 if(args[0]=='help') return message.reply("Użycie: <username> | <mode> | <platform>")
 let username = args.join(" ").split(" | ")[0]
 let platform = args.join(" ").split(" | ")[2] || 'pc';
