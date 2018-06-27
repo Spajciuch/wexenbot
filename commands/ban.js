@@ -38,8 +38,9 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
            "name": "Reason",
            "value": reason
        }
-message.channel.send({ embed });
+
                      })
+       message.channel.send({ embed });
 }
 module.exports.help = {
   name: "ban",
