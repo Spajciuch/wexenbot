@@ -21,7 +21,6 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
       .catch(error => message.reply(`<a:banhammer:460519287191240714> Sorry ${message.author} , i can't ban, because: ${error.code}`));
     const embed = {
   "title": "Banned!",
-  "description": `<a:banhammer:460519287191240714> ${member.user.tag} (id: ${member.user.id}) has been banned by ${message.author.tag} (id: ${message.author.id}), because: ${reason}`,
   "color": 16750361,
   "footer": {
     "icon_url": "https://cdn.discordapp.com/avatars/460153151073288202/e6fb8a855d1a0646bf790cfe3022e69a.png?size=2048",
@@ -29,7 +28,20 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
   },
   "thumbnail": {
     "url": message.mentions.members.first().user.avatarURL
-  }
+  },
+   "fields": [
+      {
+        "name": "Member",
+        "value": member.user.tag
+      },
+      {
+          "name":"Banned By",
+          "value": message.author
+      },
+       {
+           "name": "Reason",
+           "value": reason
+       }
 };
 message.channel.send({ embed });
                      })
