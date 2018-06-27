@@ -40,7 +40,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
       }
     ]
   }
-}
+})
        message.channel.send({ embed });
 }
 module.exports.help = {
