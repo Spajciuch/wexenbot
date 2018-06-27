@@ -22,6 +22,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
    let embed = new Discord.RichEmbed()
    .setTitle("Banned!")
    .setColor(config.embed_color)
+   .setThumbnail(member.avatarURL)
    .addField("Member", member)
    .addField("Banned By",message.author)
    .addField("Reason",reason)
