@@ -46,7 +46,6 @@ switch (new Date().getDay()) {
   case 6:
       day = "w Sobotę";
 }
-
 client.on("ready", () => {
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
