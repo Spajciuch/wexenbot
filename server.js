@@ -50,7 +50,7 @@ switch (new Date().getDay()) {
 client.on("ready", () => {
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
-    client.user.setActivity(">help", {type: "LISTENING"});
+    client.user.setActivity(">help", {type: "STREAMING"});
     console.log('[client] Logowanie')
     console.log("[client] Wystartowano o " + time)
     console.log(`[client] Zalogowano jako: ${client.user.username}`);
@@ -102,7 +102,7 @@ if (message.author.bot) return;
   args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 }
 if(message.content.startsWith(oprefix)) {
-  args = message.content.slice(oprefix.length).trim().split(/ +/g);   
+  args = message.content.slice(oprefix.length).trim().split(/ +/g);
 }
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
@@ -129,7 +129,7 @@ if(commandfile) commandfile.run(client, message, args, config);
                           database.ref(`/ustawienia/${message.guild.id}`).once('value')
                            .then(value => console.log(value.node_.ChildrenNode));
                         }
-                        
+
 if(command == 'settings') {
     database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
   .then(prefix => {
@@ -177,14 +177,14 @@ Config version: ${jest.val()}`)
     })
 })
 }
-                        
-                        
+
+
      if(command == 'username') {
   if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
   client.user.setUsername(args.join(" "))
   console.log(`Zmieniono mój nick`)
   message.channel.send("Done")
- 
+
   }
                        });
 });
