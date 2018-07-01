@@ -32,8 +32,9 @@ module.exports.run = async (client, message, args, config) => {
                 .addField("to: " + to_language, res.text)
                 .setThumbnail("https://cdn.dribbble.com/users/1341307/screenshots/3641494/google_translate.gif") // Optionnal stuff
             message.channel.send(translateembed)
-        }).catch(err => {
-            message.channel.send(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```") // Yes, I used Romanian for my example. Do you have any problem?
+        })
+        .catch(err => {
+            message.channel.send("AAAA:x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```") // Yes, I used Romanian for my example. Do you have any problem?
         });
     } else {
         message.channel.send(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```")
