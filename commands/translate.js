@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args, config) => {
             message.channel.send(translateembed)
         })
         .catch(err => {
-            message.channel.send("AAAA:x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```") // Yes, I used Romanian for my example. Do you have any problem?
+            console.log(err.message)
         });
     } else {
         message.channel.send(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```")
