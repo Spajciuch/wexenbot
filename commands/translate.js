@@ -4,6 +4,7 @@ module.exports.run = async (client, message, args, config) => {
     if (args[0]) {
         let from_language = "auto" // default languages
         let to_language = "en" // default languages
+        
         var tobe_translated = "";
         if (args[0].startsWith("from:")) { // Checking if there is a from:language & to:language, this part is not optimized
             from_language = args[0].slice(5)
@@ -34,10 +35,10 @@ module.exports.run = async (client, message, args, config) => {
             message.channel.send(translateembed)
         })
         .catch(err => {
-            console.log(err.message)
+            console.log(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:en to:es Hello, can you help me?```")
         });
     } else {
-        message.channel.send(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:ro to:fr Salut, ce mai faci?```")
+        message.channel.send(":x: Usage: `" + config.prefix + "translate [from:iso] [to:iso] <some text>` \nThe from: and to: are optional, you can check out <http://bit.ly/ISO_codesWiki> for the iso codes\nExample: ```" + config.prefix + "translate from:en to:es Hello, can you help me?```")
     }
 }
 module.exports.help = {
