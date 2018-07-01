@@ -4,6 +4,7 @@ module.exports.run = async (client, message, args, config) => {
     if (args[0]) {
         let from_language = "auto" // default languages
         let to_language = "en" // default languages
+        
         var tobe_translated = "";
         if (args[0].startsWith("from:")) { // Checking if there is a from:language & to:language, this part is not optimized
             from_language = args[0].slice(5)
