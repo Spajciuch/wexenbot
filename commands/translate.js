@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args, config) => {
     if (args[0]) {
         let from_language = "auto" // default languages
         let to_language = "en" // default languages
-        let tobe_translated = message.content.slice(config.prefix.length + command.length + 1) // Getting the text
+        let tobe_translated = args.slice(2).join(" ") // Getting the text
         if (args[0].startsWith("from:")) { // Checking if there is a from:language & to:language, this part is not optimized
             from_language = args[0].slice(5)
             tobe_translated = tobe_translated.slice(args[0].length + 1)
