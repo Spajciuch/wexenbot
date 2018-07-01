@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const config = require('../config.json')
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
   const translate = require('google-translate-api');
     if (args[0]) {
         let from_language = "auto" // default languages
