@@ -50,7 +50,7 @@ switch (new Date().getDay()) {
 client.on("ready", () => {
     const channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
-    client.user.setActivity(">help", {type: "STREAMING"});
+    client.user.setActivity(">help", {type: "WATCHING"});
     console.log('[client] Logowanie')
     console.log("[client] Wystartowano o " + time)
     console.log(`[client] Zalogowano jako: ${client.user.username}`);
