@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args, config) => {
             let translateembed = new Discord.RichEmbed()
                 .setTitle("Translate") // Optionnal stuff
                 .setColor(`0x3980b3`) // Optionnal stuff
-                .setDescription("Bip Bip Boop\nThe internet magic is here") // Optionnal stuff
+                .setDescription(final_text) // Optionnal stuff
                 .addField("`from: " + from_language + "`", "```" + tobe_translated + "```")
                 .addField("`to: " + to_language + "`", "```" + final_text + "```")
                 .setThumbnail("https://cdn.dribbble.com/users/1341307/screenshots/3641494/google_translate.gif") // Optionnal stuff
