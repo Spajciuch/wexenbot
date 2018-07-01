@@ -64,5 +64,6 @@ console.log(error);
 
 }
 module.exports.help = {
-name: "npm"
+name: "npm",
+category: "info"
 }
