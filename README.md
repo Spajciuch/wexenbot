@@ -2,13 +2,14 @@
 **Bot Created By neoney#5816 and Spyte#3976**\
 weXen is a moderation and administration bot using [discord.js library](https://discord.js.org).
 ### To do
+- [ ] unban command
 - [x] mute command
 - [x] tempmute command
 - [x] unmute command
 - [x] custom prefix
 - [x] fix kick command
 - [x] prepare readme
-### Contact 
+### Contact
 If you have an issue or you want to help us join [our discord](https://discord.gg/PMFET9W)
 # License
 The MIT License
