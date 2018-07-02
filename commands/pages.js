@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
       })
 
     })
-
+    reactionrem(message, msg)
   })
 }
 module.exports.help = {
