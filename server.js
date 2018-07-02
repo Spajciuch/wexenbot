@@ -108,7 +108,7 @@ if(message.content.startsWith(oprefix)) {
   if(message.author.bot) return;
     let commandfile = client.commands.get(command);
 if(commandfile) commandfile.run(client, message, args, config);
-  if(command == 'help'){
+  if(command == 'oldhelp'){
     fs.readdir(`./commands/`,(err, files)=>{
   if(err) console.log(err)
   let jsfile = files.filter(f => f.split(".").pop() == "js")
