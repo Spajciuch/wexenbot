@@ -3,7 +3,7 @@ module.exports.run = async (client, message, args, config) => {
   const translate = require('google-translate-api');
     if (args[0]) {
         let from_language = "auto" // default languages
-        let to_language = "en" // default languages
+        let to_language = "en" 
 
         var tobe_translated = "";
         if (args[0].startsWith("from:")) { // Checking if there is a from:language & to:language, this part is not optimized
