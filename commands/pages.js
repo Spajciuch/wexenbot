@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const config = require(`../config.json`)
 module.exports.run = async (client, message, args) => {
 
-  let pages = [`**Prefix: >**\nNeed help? Come here -> https://discord.gg/jjNfaHM`, '**Util commands**\nban\nclear\nkick\nmute\ntempmute\nunmute', '**Info**\nfortnite\nguilds\ninvite\nnpm\nping\nguildinfo\ntranslate\nuserinfo', '**Fun**\nsay\nreverse\n8ball', '**Music**\nmusichelp']; 
+  let pages = [`**Prefix: >**\nNeed help? Come here -> https://discord.gg/jjNfaHM`, '**Util commands**\nban\nclear\nkick\nmute\ntempmute\nunmute', '**Info**\noldhelp\nfortnite\nguilds\ninvite\nnpm\nping\nguildinfo\ntranslate\nuserinfo', '**Fun**\nsay\nreverse\n8ball', '**Music**\nmusichelp']; 
   let page = 1;
 
   const embed = new Discord.RichEmbed()
