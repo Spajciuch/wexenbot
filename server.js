@@ -4,7 +4,7 @@ var ffmpeg = require('ffmpeg');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
-const reactionrem = require('discord.js-remove-on-reaction')
+const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction')
 client.commands = new Discord.Collection()
 
 var firebase = require('firebase')
