@@ -122,7 +122,7 @@ if(commandfile) commandfile.run(client, message, args, config);
         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Fun", `${client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
    message.channel.send({embed: help})
-     .then(message => reactionrem(message, client))
+     .then(botmessage => reactionrem(message, botmessage))
     })
   }
 if(command == 'settings') {
