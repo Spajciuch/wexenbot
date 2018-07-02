@@ -125,8 +125,9 @@ if(commandfile) commandfile.run(client, message, args, config);
   }
 
                         if(command == 'test') {
-                          database.ref(`/ustawienia/${message.guild.id}`).once('value')
-                           .then(value => console.log(value.node_.ChildrenNode));
+                          const reactionrem = require('discord.js-remove-on-reaction')
+                          message.channel.send('Test')
+                            .then(message => reactionrem(message, client))
                         }
 
 if(command == 'settings') {
