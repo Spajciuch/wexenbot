@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require(`../config.json`)
-const reactionrem = require('discord.js-remove-on-reaction')
+const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction')
 module.exports.run = async (client, message, args) => {
 
   let pages = [`**Prefix: >**\nNeed help? Come here -> https://discord.gg/jjNfaHM`, '**Util commands**\nban\nclear\nkick\nmute\ntempmute\nunmute', '**Info**\noldhelp\nfortnite\nguilds\ninvite\nnpm\nping\nguildinfo\ntranslate\nuserinfo', '**Fun**\nsay\nreverse\n8ball', '**Music**\nmusichelp'];
