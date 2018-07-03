@@ -20,6 +20,7 @@ module.exports.run = async (client, message, args, config) => {
 		.addField("Bot:", `${user.bot}`, true)
 		.addField("Status:", `${user.presence.status.replace("dnd", "Do Not Distrub")}`, true)
 		.addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
+		.addField("Nitro:", `${user.premium}`, true)
 		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '))
 		.setFooter(`User Info`)
      message.channel.send({embed});
