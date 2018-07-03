@@ -26,7 +26,7 @@
     "firebase-admin": "5.12.1",
     "moment-duration-format" : "2.2.2",
     "google-translate-api" : "2.3.0",
-    "@spyte-corp/discord.js-remove-on-reaction": "1.0.4",
+    "@spyte-corp/discord.js-remove-on-reaction": "1.0.5",
     "@spyte-corp/simple-8ball-options": "1.0.2"
   },
   "engines": {
