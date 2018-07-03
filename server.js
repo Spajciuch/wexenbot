@@ -4,6 +4,7 @@ var ffmpeg = require('ffmpeg');
 const config = require('./config.json')
 const client = new Discord.Client()
 const fs = require('fs')
+const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction')
 client.commands = new Discord.Collection()
 
 var firebase = require('firebase')
@@ -107,7 +108,7 @@ if(message.content.startsWith(oprefix)) {
   if(message.author.bot) return;
     let commandfile = client.commands.get(command);
 if(commandfile) commandfile.run(client, message, args, config);
-  if(command == 'help'){
+  if(command == 'oldhelp'){
     fs.readdir(`./commands/`,(err, files)=>{
   if(err) console.log(err)
   let jsfile = files.filter(f => f.split(".").pop() == "js")
@@ -121,14 +122,9 @@ if(commandfile) commandfile.run(client, message, args, config);
         .addField("Utility", `${client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
         .addField("Fun", `${client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => `\`${cmd.help.name}\``).join(", ")}`)
    message.channel.send({embed: help})
+     .then(botmessage => reactionrem(message, botmessage))
     })
   }
-
-                        if(command == 'test') {
-                          database.ref(`/ustawienia/${message.guild.id}`).once('value')
-                           .then(value => console.log(value.node_.ChildrenNode));
-                        }
-
 if(command == 'settings') {
     database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
   .then(prefix => {
