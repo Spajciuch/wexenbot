@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args, config) => {
         user = message.author;
     }
     const member = message.guild.member(user);
-	
+
     const embed = new Discord.RichEmbed()
 		.setColor(config.embed_color)
 		.setTitle(`${user.username}#${user.discriminator}`)
@@ -20,11 +20,11 @@ module.exports.run = async (client, message, args, config) => {
 		.addField("Bot:", `${user.bot}`, true)
 		.addField("Status:", `${user.presence.status.replace("dnd", "Do Not Distrub")}`, true)
 		.addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
-		.setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
+		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '))
+		.setFooter(`User Info`)
      message.channel.send({embed});
     }
-module.exports.help = { 
+module.exports.help = {
   name: "userinfo",
   category: "info"
 }
