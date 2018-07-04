@@ -122,6 +122,8 @@ if(commandfile) {
 
    let help = new Discord.RichEmbed()
         .setAuthor("List of Commands")
+        .setFooter("weXen", config.avatar_url)
+        .setTimestamp()
         .setColor(config.embed_color)
         .addField("Total commands: ", jsfile.length - 1)
         .addField("Music", '`musichelp`')
