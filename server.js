@@ -76,11 +76,12 @@ client.on("message", async message => {
     if(dm) return;
        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
      .then(snapshot => {
-       if(snapshot.val() !== '1') {
+       if(snapshot.val() !== '2') {
                 firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: true,
     prefix: '>',
-    jest: '1'
+    jest: '2',
+    everyone: true
   });
   message.channel.send('Config generated, options soon!')
           }
@@ -89,7 +90,8 @@ client.on("message", async message => {
              firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: true,
     prefix: '>',
-    jest: '1'
+    jest: '2',
+    everyone: true
   });
   message.channel.send('Config generated, options soon!')
        })
@@ -136,11 +138,42 @@ if(command == 'settings') {
     database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
     .then(admin => {
         database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
-    .then(jest => {
+        .then(jest => {
+          database.ref(`/ustawienia/${message.guild.id}/everyone`).once('value')
+          .then(everyone => {
   if(!args[0]) {
+    const embed = {
+ "title": 'Settings on ' + message.guild.name,
+ "description": "All settings:",
+ "color": config.neoney_color,
+ "footer": {
+   "icon_url": config.avatar_url,
+   "text": "weXen"
+ },
+ "fields": [
+   {
+     "name": "Config version",
+     "value": jest.val()
+   },
+   {
+     "name": "Util commands",
+     "value": admin.val() + "\n`settings util <on|off>`"
+   },
+   {
+     "name": "Prefix",
+     "value": prefix.val() + "\n`settings prefix <prefix>`"
+   },
+   {
+     "name": "@everyone and @here alert",
+     "value": everyone.val() + "\n`settings everyone <on|off>`"
+   }
+ ]
+};
+message.channel.send({ embed })
     message.channel.send(`Prefix: ${prefix.val()}
 Util commands: ${admin.val()}
-Config version: ${jest.val()}`)
+Config version: ${jest.val()}
+Everyone and here alert: ${everyone.val()}`)
   } else if(args[0] == 'prefix') {
     if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
     if(args[1] == '') return message.reply('You didn\'t specify a prefix!')
@@ -148,7 +181,8 @@ Config version: ${jest.val()}`)
     firebase.database().ref('ustawienia/' + message.guild.id).set({
     prefix: args.join(" "),
     jest: jest.val(),
-    admin: admin.val()
+    admin: admin.val(),
+    everyone: everyone.val()
   });
     message.channel.send(`New prefix is \`${args.join(" ")}\``);
   } else if(args[0] == 'util') {
@@ -157,16 +191,38 @@ Config version: ${jest.val()}`)
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: true,
     jest: jest.val(),
-    prefix: prefix.val()
+    prefix: prefix.val(),
+    everyone: everyone.val()
   });
       message.channel.send('Util commands are now `on`!');
     } else if(args[1] == 'off') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: false,
     jest: jest.val(),
-    prefix: prefix.val()
+    prefix: prefix.val(),
+    everyone: everyone.val()
   });
             message.channel.send('Util commands are now `off`!');
+    } else {
+      message.reply('That\'s not a valid option!');
+    }
+  } else if(args[0] == "everyone") {
+    if(args[1] == 'on') {
+          firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: admin.val(),
+    jest: jest.val(),
+    prefix: prefix.val(),
+    everyone: true
+  });
+      message.channel.send('Everyone and here alert is now `on`!');
+    } else if(args[1] == 'off') {
+          firebase.database().ref('ustawienia/' + message.guild.id).set({
+    admin: admin.val(),
+    jest: jest.val(),
+    prefix: prefix.val(),
+    everyone: false
+  });
+            message.channel.send('Everyone and here alert is now `off`!');
     } else {
       message.reply('That\'s not a valid option!');
     }
@@ -175,6 +231,7 @@ Config version: ${jest.val()}`)
   }
     })
     })
+})
 })
 }
 
@@ -192,6 +249,8 @@ Config version: ${jest.val()}`)
 client.on("message", message => {
   if(message.channel.type.toLowerCase() == 'dm') return;
   if(message.author.id == message.guild.owner.id) return
+  database.ref(`/ustawienia/${message.guild.id}/everyone`).once('value')
+  .then(everyone => { if(!everyone.val()) return; })
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
     let embed = new Discord.RichEmbed()
     .setTitle("Someone used @everyone or @here")
