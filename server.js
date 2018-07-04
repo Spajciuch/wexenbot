@@ -203,6 +203,7 @@ message.channel.send({ embed })
       message.reply('That\'s not a valid option!');
     }
   } else if(args[0] == "everyone") {
+    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
     if(args[1] == 'on') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: admin.val(),
