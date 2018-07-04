@@ -27,7 +27,7 @@ const embed = {
     },
     {
      "name": "PC info:",
-      "value": "System: " + sys().osystem + "\nRAM:\n Full: " + sys().ram + "\n Free: " + sys().freeram
+      "value": "System: " + sys().osystem + "\nRAM:\n ● Full: " + sys().ram + "\n ● Free: " + sys().freeram
     }
   ]
 };
