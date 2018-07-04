@@ -20,7 +20,6 @@ if(gamemode == 'solo'){
   let wins = solostats.wins
   let top3 = solostats.top_3
   let embed = new Discord.RichEmbed()
-  .setFooter("Fortnite stats [solo]")
   .setColor(config.embed_color)
   .setTitle(data.username + `'s stats [solo]`)
   .addField(`Score`, score,true)
@@ -29,6 +28,8 @@ if(gamemode == 'solo'){
   .addField("Top 3", top3,true)
   .addField("Kills", kills,true)
   .addField("K/D", kd,true)
+  .setFooter("weXen", config.avatar_url)
+  .setTimestamp()
   message.channel.send(embed)
   }
 else if(gamemode == 'duo'){
@@ -40,7 +41,6 @@ else if(gamemode == 'duo'){
   let wins = duostats.wins
   let top3 = duostats.top_3
   let embed = new Discord.RichEmbed()
-  .setFooter("Fortnite statistics [duo]")
   .setColor(config.embed_color)
   .setTitle(data.username + `'s stats [duo]`)
   .addField(`Score`, score,true)
@@ -49,6 +49,8 @@ else if(gamemode == 'duo'){
   .addField("Top 3", top3,true)
   .addField("Kills", kills,true)
   .addField("K/D", kd,true)
+  .setFooter("weXen", config.avatar_url)
+  .setTimestamp()
   message.channel.send(embed)
   }
 else if(gamemode == 'squad'){
@@ -83,7 +85,8 @@ let kills = lifetime[10]['Kills']
 let kd = lifetime[11]['K/d']
 
 let embed = new Discord.RichEmbed()
-.setFooter("Fortnite Statistics [lifetime]")
+.setFooter("weXen", config.avatar_url)
+.setTimestamp()
 .setColor(config.embed_color)
 .setTitle(data.username + `'s statistics [lifetime]`)
 .addField(`Score`, score,true)
