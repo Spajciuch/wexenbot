@@ -110,6 +110,8 @@ if(message.content.startsWith(oprefix)) {
 if(commandfile) {
   message.react(client.guilds.get("438388747088822292").emojis.get("464105258549772289"));
   commandfile.run(client, message, args, config);
+} else {
+ message.react(client.guilds.get("438388747088822292").emojis.get("464107488053166101"))
 }
   if(command == 'oldhelp'){
     fs.readdir(`./commands/`,(err, files)=>{
