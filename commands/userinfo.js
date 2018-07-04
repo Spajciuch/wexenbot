@@ -22,7 +22,8 @@ module.exports.run = async (client, message, args, config) => {
 		.addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
 		// .addField("Nitro:", `${user.premium}`, true)
 		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '))
-		.setFooter(`User Info`)
+		.setFooter("weXen", config.avatar_url)
+	  .setTimestamp()
      message.channel.send({embed});
     }
 module.exports.help = {
