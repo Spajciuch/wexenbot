@@ -26,6 +26,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
    .addField("Member", member)
    .addField("Banned By",message.author)
    .addField("Reason",reason)
+   .setFooter("weXen", config.avatar_url)
    message.channel.send({embed})
 })
 }
