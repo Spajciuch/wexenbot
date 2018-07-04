@@ -112,7 +112,7 @@ if(message.content.startsWith(oprefix)) {
 if(commandfile) {
   message.react(client.guilds.get("438388747088822292").emojis.get("464105258549772289"));
   commandfile.run(client, message, args, config);
-} else {
+} else if(!commandfile && command !== 'settings' && command !== 'oldhelp') {
  message.react(client.guilds.get("438388747088822292").emojis.get("464107488053166101"))
 }
   if(command == 'oldhelp'){
@@ -170,10 +170,6 @@ if(command == 'settings') {
  ]
 };
 message.channel.send({ embed })
-    message.channel.send(`Prefix: ${prefix.val()}
-Util commands: ${admin.val()}
-Config version: ${jest.val()}
-Everyone and here alert: ${everyone.val()}`)
   } else if(args[0] == 'prefix') {
     if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
     if(args[1] == '') return message.reply('You didn\'t specify a prefix!')
