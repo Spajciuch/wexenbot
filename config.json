@@ -6,5 +6,6 @@
  "neoney_color": "16750361",
  "oldembed": "#00a9ff",
  "google": "AIzaSyAM02Fnk5K5JwDBLPy7HZFANyiph7ZUMog",
- "avatar_url": "https://cdn.discordapp.com/avatars/460153151073288202/b586b84bf8b51d53f6b04d9bb1e3d945.png?size=2048"
+ "avatar_url": "https://cdn.discordapp.com/avatars/460153151073288202/b586b84bf8b51d53f6b04d9bb1e3d945.png?size=2048",
+ "no_permissions": "message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"))"
 }

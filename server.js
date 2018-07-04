@@ -173,7 +173,7 @@ if(command == 'settings') {
 };
 message.channel.send({ embed })
   } else if(args[0] == 'prefix') {
-    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
+    if(!message.member.hasPermission('MANAGE_GUILD')) return eval(config.no_permissions);
     if(args[1] == '') return message.reply('You didn\'t specify a prefix!')
     const prefixo = args.shift()
     firebase.database().ref('ustawienia/' + message.guild.id).set({
@@ -184,7 +184,7 @@ message.channel.send({ embed })
   });
     message.channel.send(`New prefix is \`${args.join(" ")}\``);
   } else if(args[0] == 'util') {
-   if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
+   if(!message.member.hasPermission('MANAGE_GUILD')) return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
     if(args[1] == 'on') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: true,
@@ -205,7 +205,7 @@ message.channel.send({ embed })
       message.reply('That\'s not a valid option!');
     }
   } else if(args[0] == "everyone") {
-    if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You aren\'t permitted to do that!');
+    if(!message.member.hasPermission('MANAGE_GUILD')) return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
     if(args[1] == 'on') {
           firebase.database().ref('ustawienia/' + message.guild.id).set({
     admin: admin.val(),
@@ -236,7 +236,7 @@ message.channel.send({ embed })
 
 
      if(command == 'username') {
-  if(message.author.id !== '367390191721381890') return message.reply("You aren't permitted to do that!")
+  if(message.author.id !== '367390191721381890') return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
   client.user.setUsername(args.join(" "))
   console.log(`Zmieniono mój nick`)
   message.channel.send("Done")

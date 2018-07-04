@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args, config) => {
 await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
     if (!message.member.hasPermission("KICK_MEMBERS", false, true, true))
-      return message.reply("You don't have enough permissions!");
+      return eval(config.no_permissions);
     let member = message.mentions.members.first();
     if (!member)
       return message.reply("You have to mention someone.");

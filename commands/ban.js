@@ -4,7 +4,7 @@ var firebase = require('firebase')
 await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
     if (!message.member.hasPermission("BAN_MEMBERS", false, true, true))
-      return message.reply("<a:banhammer:460519287191240714> You don't have enough permissions!");
+      return eval(config.no_permissions);
 
     let member = message.mentions.members.first();
     if (!member)
