@@ -107,7 +107,10 @@ if(message.content.startsWith(oprefix)) {
   const command = args.shift().toLowerCase();
   if(message.author.bot) return;
     let commandfile = client.commands.get(command);
-if(commandfile) commandfile.run(client, message, args, config);
+if(commandfile) {
+  message.react(client.guilds.get("438388747088822292").emojis.get("464105258549772289"));
+  commandfile.run(client, message, args, config);
+}
   if(command == 'oldhelp'){
     fs.readdir(`./commands/`,(err, files)=>{
   if(err) console.log(err)
