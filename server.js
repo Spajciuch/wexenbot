@@ -247,7 +247,7 @@ client.on("message", message => {
   if(message.channel.type.toLowerCase() == 'dm') return;
   if(message.author.id == message.guild.owner.id) return
   database.ref(`/ustawienia/${message.guild.id}/everyone`).once('value')
-  .then(everyone => { if(!everyone.val()) return; })
+  .then(everyone => { if(!everyone.val()) return;
   if(message.content.includes("@everyone") || message.content.includes("@here")) {
     let embed = new Discord.RichEmbed()
     .setTitle("Someone used @everyone or @here")
@@ -258,6 +258,7 @@ client.on("message", message => {
     message.guild.owner.send({embed});
     message.reply('Hey! Don\'t do that!')
   }
+  })
   if(message.content == '<@460153151073288202>' || message.content == '<!@460153151073288202>') {
    message.channel.send('What?')
   }
