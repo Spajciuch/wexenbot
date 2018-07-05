@@ -164,11 +164,13 @@ const applyText = (canvas, text) => {
       // Assign the font to the context and decrement it so it can be measured again
       ctx.font = `${fontSize -= 10}px Dosis`;
       // Compare pixel width of the text to the canvas minus the approximate avatar size
-  } while (ctx.measureText(text).width > canvas.width - 300);
+  } while (ctx.measureText(text).width > canvas.width - 310);
 
   // Return the result to use in the actual canvas
   return ctx.font;
 };
+
+
 
 client.on('guildMemberAdd', async member => {
   const channel = member.guild.channels.find(ch => ch.name === 'member-log');
@@ -177,6 +179,17 @@ client.on('guildMemberAdd', async member => {
   const canvas = Canvas.createCanvas(700, 250);
   const ctx = canvas.getContext('2d');
 
+  function drawStroked(canvas, text, x, y, baseline) {
+    ctx.font = applyText(canvas, text);
+    ctx.strokeStyle = 'black';
+    ctx.textAlign="center";
+    ctx.lineWidth = 3;
+    ctx.textBaseline = baseline;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, x, y);
+  }
+
   const background = await Canvas.loadImage('./welcome-image.png');
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
@@ -184,14 +197,14 @@ client.on('guildMemberAdd', async member => {
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
   // Slightly smaller text placed above the member's display name
-  ctx.font = '28px Dosis';
+  ctx.font = '30px Dosis';
   ctx.fillStyle = '#ffffff';
-  ctx.fillText('Welcome to the server,', 280, 70);
+  drawStroked(canvas, 'joined at\n' + member.joinedAt.toString().slice(0, -14), 450, 159, "bottom")
 
   // Add an exclamation point here and below
-  ctx.font = applyText(canvas, `${member.displayName}!`);
+  ctx.font = applyText(canvas, member.displayName);
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(`${member.displayName}!`, 318, 165);
+  drawStroked(canvas, member.displayName, 450, 120, "bottom")
 
   ctx.beginPath();
   ctx.arc(135, 124, 93, 0, Math.PI * 2, false);
@@ -200,13 +213,12 @@ client.on('guildMemberAdd', async member => {
 
   const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
   const avatar = await Canvas.loadImage(buffer);
-  ctx.drawImage(avatar, 35, 24, 200, 200);
+  ctx.drawImage(avatar, 37, 26, 194, 194);
 
   const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
 
   channel.send(`Welcome to the server, ${member}!`, attachment);
 });
-
 
 client.login(process.env.TOKEN)
 
