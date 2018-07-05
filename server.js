@@ -1,54 +1,56 @@
-const Discord = require('discord.js')
-const Music = require('discord.js-musicbot-addon-v2');
+var Discord = require('discord.js');
+var Music = require('discord.js-musicbot-addon-v2');
 var ffmpeg = require('ffmpeg');
-const config = require('./config.json')
-const client = new Discord.Client()
-const fs = require('fs')
-const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction')
-client.commands = new Discord.Collection()
+var config = require('./config.json');
+var client = new Discord.Client();
+var Canvas = require('canvas');
+var snekfetch = require('snekfetch');
+var fs = require('fs');
+var reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
+client.commands = new Discord.Collection();
 
-var firebase = require('firebase')
+var firebase = require('firebase');
 
 var config2 = {
-  apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
-  authDomain: "wexenbot.firebaseapp.com",
-  databaseURL: "https://wexenbot.firebaseio.com/",
-  projectId: "wexenbot",
-  storageBucket: "wexenbot.appspot.com",
-  messagingSenderId: "158046768135"
-};
+  apiKey: "AIzaSyASb3EFbgin_e8_sGfxx6YcEvTuATh2pWg",
+  authDomain: "wexen-canary.firebaseapp.com",
+  databaseURL: "https://wexen-canary.firebaseio.com",
+  projectId: "wexen-canary",
+  storageBucket: "wexen-canary.appspot.com",
+  messagingSenderId: "130335289280"
+    };
 firebase.initializeApp(config2);
 var database = firebase.database();
 
-var d = new Date()
-var hour = d.getHours() +2
-var minute = d.getMinutes()
-var minute = `${minute}`.padStart(2, 0)
-var time = hour + ":" + minute
+var d = new Date();
+var hour = d.getHours() + 2;
+var minute = d.getMinutes();
+var minute = `${minute}`.padStart(2, 0);
+var time = hour + ":" + minute;
 switch (new Date().getDay()) {
-  case 0:
+case 0:
       day = " w Niedzielę";
       break;
-  case 1:
+case 1:
       day = "w Poniedziałek";
       break;
-  case 2:
+case 2:
       day = "we Wtorek";
       break;
-  case 3:
+case 3:
       day = "w Środę";
       break;
-  case 4:
+case 4:
       day = "w Czwartek";
       break;
-  case 5:
+case 5:
       day = "w Piątek";
       break;
-  case 6:
+case 6:
       day = "w Sobotę";
-}
-client.on("ready", () => {
-    const channelgeneral = client.channels.find("id", "460167148883410964");
+};
+client.on("ready", () =>  {
+    var channelgeneral = client.channels.find("id", "460167148883410964");
     channelgeneral.send('I\'ve just turned on!')
     client.user.setActivity(">help", {type: "WATCHING"});
     console.log('[client] Logowanie')
@@ -84,7 +86,7 @@ client.on("message", async message => {
     everyone: true
   });
   message.channel.send('Config generated, options soon!')
-          }
+	   }
        })
     .catch(error => {
              firebase.database().ref('ustawienia/' + message.guild.id).set({
@@ -134,109 +136,10 @@ if(commandfile) {
      .then(botmessage => reactionrem(message, botmessage))
     })
   }
-if(command == 'settings') {
-    database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
-  .then(prefix => {
-    database.ref(`/ustawienia/${message.guild.id}/admin`).once('value')
-    .then(admin => {
-        database.ref(`/ustawienia/${message.guild.id}/jest`).once('value')
-        .then(jest => {
-          database.ref(`/ustawienia/${message.guild.id}/everyone`).once('value')
-          .then(everyone => {
-  if(!args[0]) {
-    const embed = {
- "title": 'Settings on ' + message.guild.name,
- "description": "All settings:",
- "color": config.neoney_color,
- "footer": {
-   "icon_url": config.avatar_url,
-   "text": "weXen"
- },
- "fields": [
-   {
-     "name": "Config version",
-     "value": jest.val()
-   },
-   {
-     "name": "Util commands",
-     "value": admin.val() + "\n`settings util <on|off>`"
-   },
-   {
-     "name": "Prefix",
-     "value": prefix.val() + "\n`settings prefix <prefix>`"
-   },
-   {
-     "name": "@everyone and @here alert",
-     "value": everyone.val() + "\n`settings everyone <on|off>`"
-   }
- ]
-};
-message.channel.send({ embed })
-  } else if(args[0] == 'prefix') {
-    if(!message.member.hasPermission('MANAGE_GUILD')) return eval(config.no_permissions);
-    if(args[1] == '') return message.reply('You didn\'t specify a prefix!')
-    const prefixo = args.shift()
-    firebase.database().ref('ustawienia/' + message.guild.id).set({
-    prefix: args.join(" "),
-    jest: jest.val(),
-    admin: admin.val(),
-    everyone: everyone.val()
-  });
-    message.channel.send(`New prefix is \`${args.join(" ")}\``);
-  } else if(args[0] == 'util') {
-   if(!message.member.hasPermission('MANAGE_GUILD')) return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
-    if(args[1] == 'on') {
-          firebase.database().ref('ustawienia/' + message.guild.id).set({
-    admin: true,
-    jest: jest.val(),
-    prefix: prefix.val(),
-    everyone: everyone.val()
-  });
-      message.channel.send('Util commands are now `on`!');
-    } else if(args[1] == 'off') {
-          firebase.database().ref('ustawienia/' + message.guild.id).set({
-    admin: false,
-    jest: jest.val(),
-    prefix: prefix.val(),
-    everyone: everyone.val()
-  });
-            message.channel.send('Util commands are now `off`!');
-    } else {
-      message.reply('That\'s not a valid option!');
-    }
-  } else if(args[0] == "everyone") {
-    if(!message.member.hasPermission('MANAGE_GUILD')) return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
-    if(args[1] == 'on') {
-          firebase.database().ref('ustawienia/' + message.guild.id).set({
-    admin: admin.val(),
-    jest: jest.val(),
-    prefix: prefix.val(),
-    everyone: true
-  });
-      message.channel.send('Everyone and here alert is now `on`!');
-    } else if(args[1] == 'off') {
-          firebase.database().ref('ustawienia/' + message.guild.id).set({
-    admin: admin.val(),
-    jest: jest.val(),
-    prefix: prefix.val(),
-    everyone: false
-  });
-            message.channel.send('Everyone and here alert is now `off`!');
-    } else {
-      message.reply('That\'s not a valid option!');
-    }
-  } else {
-   message.reply('That\'s not a valid option!');
-  }
-    })
-    })
-})
-})
-}
 
 
      if(command == 'username') {
-  if(message.author.id !== '367390191721381890') return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
+  if (!config.owner_ids.some(x=>x == message.author.id)) return eval(config.no_permissions);
   client.user.setUsername(args.join(" "))
   console.log(`Zmieniono mój nick`)
   message.channel.send("Done")
@@ -261,12 +164,78 @@ client.on("message", message => {
     message.reply('Hey! Don\'t do that!')
   }
   })
-  if(message.content == '<@460153151073288202>' || message.content == '<!@460153151073288202>') {
+  if(message.content == '<@464388330625171476>' || message.content == '<!@464388330625171476>') {
    message.channel.send('What?')
   }
 })
+// Pass the entire Canvas object because you'll need to access its width, as well its context
+const applyText = (canvas, text) => {
+  const ctx = canvas.getContext('2d');
 
-client.login(process.env.TOKEN)
+  // Declare a base size of the font
+  let fontSize = 130;
+
+  do {
+      // Assign the font to the context and decrement it so it can be measured again
+      ctx.font = `${fontSize -= 10}px Dosis`;
+      // Compare pixel width of the text to the canvas minus the approximate avatar size
+  } while (ctx.measureText(text).width > canvas.width - 310);
+
+  // Return the result to use in the actual canvas
+  return ctx.font;
+};
+
+
+
+client.on('guildMemberAdd', async member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+  if (!channel) return;
+  
+  const canvas = Canvas.createCanvas(700, 250);
+  const ctx = canvas.getContext('2d');
+
+  function drawStroked(canvas, text, x, y, baseline) {
+    ctx.font = applyText(canvas, text);
+    ctx.strokeStyle = 'black';
+    ctx.textAlign="center"; 
+    ctx.lineWidth = 3;
+    ctx.textBaseline = baseline;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, x, y);
+  }
+
+  const background = await Canvas.loadImage('./welcome-image.png');
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = '#74037b';
+  ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+  // Slightly smaller text placed above the member's display name
+  ctx.font = '30px Dosis';
+  ctx.fillStyle = '#ffffff';
+  drawStroked(canvas, 'joined at\n' + member.joinedAt.toString().slice(0, -14), 450, 159, "bottom")
+
+  // Add an exclamation point here and below
+  ctx.font = applyText(canvas, member.displayName);
+  ctx.fillStyle = '#ffffff';
+  drawStroked(canvas, member.displayName, 450, 120, "bottom")
+
+  ctx.beginPath();
+  ctx.arc(135, 124, 93, 0, Math.PI * 2, false);
+  ctx.closePath();
+  ctx.clip();
+
+  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
+  const avatar = await Canvas.loadImage(buffer);
+  ctx.drawImage(avatar, 37, 26, 194, 194);
+
+  const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
+
+  channel.send(`Welcome to the server, ${member}!`, attachment);
+});
+
+client.login("NDY0Mzg4MzMwNjI1MTcxNDc2.Dh-W0Q.adVYvAlAaOIG_Z4f_gaEl5C8Vq8")
 
 const music = new Music(client, {
    prefix: config.prefix,
