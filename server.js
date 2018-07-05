@@ -4,6 +4,7 @@ var ffmpeg = require('ffmpeg');
 var config = require('./config.json');
 var client = new Discord.Client();
 var fs = require('fs');
+var Canvas = require('canvas');
 var reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
 client.commands = new Discord.Collection();
 
@@ -274,6 +275,60 @@ client.on("message", message => {
     message.channel.send('What?')
   }
 })
+
+const applyText = (canvas, text) => {
+  const ctx = canvas.getContext('2d');
+
+  // Declare a base size of the font
+  let fontSize = 130;
+
+  do {
+      // Assign the font to the context and decrement it so it can be measured again
+      ctx.font = `${fontSize -= 10}px Dosis`;
+      // Compare pixel width of the text to the canvas minus the approximate avatar size
+  } while (ctx.measureText(text).width > canvas.width - 300);
+
+  // Return the result to use in the actual canvas
+  return ctx.font;
+};
+
+client.on('guildMemberAdd', async member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+  if (!channel) return;
+
+  const canvas = Canvas.createCanvas(700, 250);
+  const ctx = canvas.getContext('2d');
+
+  const background = await Canvas.loadImage('./welcome-image.png');
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = '#74037b';
+  ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+  // Slightly smaller text placed above the member's display name
+  ctx.font = '28px Dosis';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Welcome to the server,', 280, 70);
+
+  // Add an exclamation point here and below
+  ctx.font = applyText(canvas, `${member.displayName}!`);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(`${member.displayName}!`, 318, 165);
+
+  ctx.beginPath();
+  ctx.arc(135, 124, 93, 0, Math.PI * 2, false);
+  ctx.closePath();
+  ctx.clip();
+
+  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
+  const avatar = await Canvas.loadImage(buffer);
+  ctx.drawImage(avatar, 35, 24, 200, 200);
+
+  const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
+
+  channel.send(`Welcome to the server, ${member}!`, attachment);
+});
+
 
 client.login(process.env.TOKEN)
 
