@@ -24,7 +24,7 @@ var database = firebase.database();
 var d = new Date();
 var hour = d.getHours() + 2;
 var minute = d.getMinutes();
-var minute = ${minute}.padStart(2, 0);
+var minute = `${minute}`.padStart(2, 0);
 var time = hour + ":" + minute;
 switch (new Date().getDay()) {
   case 0:
