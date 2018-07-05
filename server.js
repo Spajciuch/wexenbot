@@ -121,7 +121,7 @@ client.on("message", async message => {
         message.react(client.guilds.get("438388747088822292").emojis.get("464107488053166101"))
       }
       if (command == 'username') {
-        if (message.author.id !== '367390191721381890') return message.react(client.guilds.get("438388747088822292").emojis.get("464156534587260958"));
+        if (!config.owner_ids.some(x=>x == message.author.id)) return eval(config.no_permissions);
         client.user.setUsername(args.join(" "))
         console.log(`Zmieniono mój nick`)
         message.channel.send("Done")
