@@ -30,7 +30,7 @@
     "@spyte-corp/discord.js-remove-on-reaction": "1.0.5",
     "@spyte-corp/simple-8ball-options": "1.0.2",
     "computer-info": "0.2.5",
-     "installed-fonts": "0.0.3",
+     "installed-fonts": "0.0.3"
   },
   "engines": {
     "node": "9.7.1"
