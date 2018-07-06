@@ -8,31 +8,31 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "discord.js": "11.3.2",
-     "quick.hook": "1.4.2",
-    "text-meme" : "2.3.0",
-    "canvas": "2.0.0-alpha.12",
-    "ms" : "^2.1.1",
-    "edit-json-file": "^1.0.8",
-    "discord.js-musicbot-addon-v2": "1.10.4",
-    "ytdl-core": "0.20.4",
-    "youtube-playlist-info": "1.1.2",
-    "node-opus": "0.3.0",
-    "ffmpeg": "^0.0.4",
-    "ytsearcher": "1.0.3",
-    "moment": "^2.22.2",
-    "fortnite": "4.1.1",
-    "google":"2.1.0",
-    "firebase": "5.1.0",
-    "firebase-admin": "5.12.1",
-    "moment-duration-format" : "2.2.2",
-    "google-translate-api" : "2.3.0",
     "@spyte-corp/discord.js-remove-on-reaction": "1.0.5",
     "@spyte-corp/simple-8ball-options": "1.0.2",
+    "canvas": "2.0.0-alpha.12",
     "computer-info": "0.2.5",
-     "installed-fonts": "0.0.3"
+    "discord.js": "discordjs/discord.js",
+    "discord.js-musicbot-addon-v2": "1.10.4",
+    "edit-json-file": "^1.0.8",
+    "ffmpeg": "^0.0.4",
+    "firebase": "5.1.0",
+    "firebase-admin": "5.12.1",
+    "fortnite": "4.1.1",
+    "google": "2.1.0",
+    "google-translate-api": "2.3.0",
+    "installed-fonts": "0.0.3",
+    "moment": "^2.22.2",
+    "moment-duration-format": "2.2.2",
+    "ms": "^2.1.1",
+    "node-opus": "0.3.0",
+    "quick.hook": "1.4.2",
+    "text-meme": "2.3.0",
+    "youtube-playlist-info": "1.1.2",
+    "ytdl-core": "0.20.4",
+    "ytsearcher": "1.0.3"
   },
   "engines": {
-    "node": "9.7.1"
+    "node": "10.5.0"
   }
 }
