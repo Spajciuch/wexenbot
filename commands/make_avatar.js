@@ -1,5 +1,49 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
+    if(args[0] == "-adv") {
+        const applyText = (canvas, text, font) => {
+            const ctx = canvas.getContext('2d');
+            // Declare a base size of the font
+            let fontSize = 700;
+
+            do {
+                // Assign the font to the context and decrement it so it can be measured again
+                ctx.font = `${fontSize -= 10}px "${font}"`;
+                // Compare pixel width of the text to the canvas minus the approximate avatar size
+            } while (ctx.measureText(text).width > canvas.width - 310);
+
+            // Return the result to use in the actual canvas
+            return ctx.font;
+          };
+          const json = JSON.parse('{\n "' + args.slice(1).join(" ").replace(/: +/g, '": "').replace(/, +/g, '", "') + '"\n}');
+          const Canvas = require('canvas')
+          const snekfetch = require('snekfetch')
+          const canvas = Canvas.createCanvas(1024, 1024);
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = json.bg_color
+          ctx.fillRect(0, 0, 1024, 1024)
+          ctx.beginPath();
+          ctx.lineWidth="15";
+          ctx.strokeStyle=json.stroke_color
+          ctx.rect(0,0,canvas.width,canvas.height);
+          ctx.stroke();
+          let font = "Dosis"
+          font = json.font
+          if(!font) {
+            font = "Dosis"
+          }
+          const text = json.text
+
+          ctx.fillStyle = json.text_color
+          ctx.font = applyText(canvas, text, font)
+          ctx.textBaseline = "middle";
+          ctx.textAlign="center";
+          ctx.fillText(text, canvas.width/2, canvas.height/2)
+
+          const attachment = new Discord.Attachment(canvas.toBuffer(), 'avatar.png');
+
+        message.channel.send(`I've tried... ${message.member}`, attachment);
+    } else {
   const applyText = (canvas, text, font) => {
     const ctx = canvas.getContext('2d');
 
@@ -74,6 +118,7 @@ function padZero(str, len) {
   const attachment = new Discord.Attachment(canvas.toBuffer(), 'avatar.png');
 
 message.channel.send(`I've tried... ${message.member}`, attachment);
+    }
 }
 module.exports.help = {
   name: "make_avatar",
