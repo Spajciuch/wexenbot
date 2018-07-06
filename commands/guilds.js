@@ -25,7 +25,7 @@ message.channel.send({ embed });
       if(numer < 1) return message.reply('How would you use it?');
       client.guilds.array()[numer - 1].channels.filter(channel => channel.type !== 'category').first().createInvite()
         .then(invite => { 
-      let embed = new Discord.RichEmbed()
+      let embed = new Discord.MessageEmbed()
       .setTitle("Invitation Link")
       .addField("Guild",client.guilds.array()[numer - 1])
       .addField("Link", "https://discord.gg/" + invite.code )

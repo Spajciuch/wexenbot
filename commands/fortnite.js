@@ -39,7 +39,7 @@ module.exports.run = async(client, message, args, config) => {
       const kills = duostats.kills;
       const wins = duostats.wins;
       const top3 = duostats.top_3;
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setColor(config.embed_color)
         .setTitle(data.username + "'s stats [duo]")
         .addField("Score", score, true)
@@ -59,7 +59,7 @@ module.exports.run = async(client, message, args, config) => {
       const kills = squadstats.kills;
       const wins = squadstats.wins;
       const top3 = squadstats.top_3;
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setFooter("Fortnite Statistics [squad]")
         .setColor("#00a9ff")
         .setTitle(data.username + "'s statistics [squad]")
@@ -80,7 +80,7 @@ module.exports.run = async(client, message, args, config) => {
       const kills = lifetime[10]["Kills"];
       const kd = lifetime[11]["K/d"];
 
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setFooter("weXen", config.avatar_url)
         .setTimestamp()
         .setColor(config.embed_color)

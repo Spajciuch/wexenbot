@@ -5,7 +5,8 @@
   "main": "server.js",
   "author": "Neoney & Spyte",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "nodemon": "nodemon server.js"
   },
   "dependencies": {
     "@spyte-corp/discord.js-remove-on-reaction": "^1.0.5",
@@ -25,6 +26,7 @@
     "node-opus": "0.3.0",
     "quick.hook": "^1.4.2",
     "text-meme": "2.3.0",
+    "unzip": "^0.1.11",
     "youtube-playlist-info": "1.1.2",
     "ytdl-core": "0.20.4",
     "ytsearcher": "1.0.3"
