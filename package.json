@@ -12,7 +12,7 @@
     "@spyte-corp/simple-8ball-options": "^1.0.2",
     "canvas": "^2.0.0-alpha.12",
     "computer-info": "^0.2.5",
-    "discord.js": "^11.3.2",
+    "discord.js": "discordjs/discord.js",
     "discord.js-musicbot-addon-v2": "^1.10.4",
     "ffmpeg": "^0.0.4",
     "firebase": "^5.1.0",
@@ -30,6 +30,6 @@
     "ytsearcher": "1.0.3"
   },
   "engines": {
-    "node": "9.7.1"
+    "node": "10.5.0"
   }
 }

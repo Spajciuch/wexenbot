@@ -51,13 +51,13 @@ case 6:
   day = " w Sobotę";
 }
 client.on("ready", () => {
-  const channelgeneral = client.channels.find("id", "460167148883410964");
-  channelgeneral.send("I\"ve just turned on!");
+  const channelgeneral = client.channels.get("460167148883410964");
+  channelgeneral.send("I've just turned on!");
   client.user.setActivity(">help", {type: "WATCHING"});
-  console.log("\x1b[36m [client] Logowanie\x1b[0m");
-  console.log("\x1b[36m [client] Wystartowano o " + time + day + "\x1b[0m");
-  console.log(`\x1b[36m [client] Zalogowano jako: ${client.user.username}\x1b[0m`);
-  console.log("\x1b[36m%s\x1b[0m [client] Bot obsługuje " + client.users.size + " osób, " + client.channels.size + " kanałów, " + client.guilds.size + " serwerów");
+  console.log("\x1b[36m[client] Logowanie\x1b[0m");
+  console.log("\x1b[36m[client] Wystartowano o " + time + day + "\x1b[0m");
+  console.log(`\x1b[36m[client] Zalogowano jako: ${client.user.username}\x1b[0m`);
+  console.log("\x1b[36m[client] Bot obsługuje " + client.users.size + " osób, " + client.channels.size + " kanałów, " + client.guilds.size + " serwerów\x1b[0m");
 });
 fs.readdir("./commands/", (err, files) => {
   if (err) console.log(err);
