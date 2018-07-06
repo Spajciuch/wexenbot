@@ -8,6 +8,7 @@ var snekfetch = require('snekfetch');
 var fs = require('fs');
 var reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
 client.commands = new Discord.Collection();
+const moment = require('moment')
 
 var firebase = require('firebase');
 
@@ -204,8 +205,18 @@ client.on('guildMemberAdd', async member => {
     ctx.fillStyle = 'white';
     ctx.fillText(text, x, y);
   }
+  function drawStroked2(canvas, text, x, y, baseline) {
+    ctx.font = `45px Dosis`
+    ctx.strokeStyle = 'black';
+    ctx.textAlign="center"; 
+    ctx.lineWidth = 3;
+    ctx.textBaseline = baseline;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, x, y);
+  }
 
-  const background = await Canvas.loadImage('./welcome-image.png');
+  const background = await Canvas.loadImage('./welcome-image.jpg');
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   ctx.strokeStyle = '#74037b';
@@ -214,7 +225,7 @@ client.on('guildMemberAdd', async member => {
   // Slightly smaller text placed above the member's display name
   ctx.font = '30px Dosis';
   ctx.fillStyle = '#ffffff';
-  drawStroked(canvas, 'joined at\n' + member.joinedAt.toString().slice(0, -14), 450, 159, "bottom")
+  drawStroked2(canvas, 'joined at\n' + moment.utc(member.joinedAt).format('DD.MM.YYYY'), 380, 159, "bottom")
 
   // Add an exclamation point here and below
   ctx.font = applyText(canvas, member.displayName);
@@ -223,6 +234,9 @@ client.on('guildMemberAdd', async member => {
 
   ctx.beginPath();
   ctx.arc(135, 124, 93, 0, Math.PI * 2, false);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 9;
+  ctx.stroke();
   ctx.closePath();
   ctx.clip();
 
