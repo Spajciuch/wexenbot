@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   let pages = ['**Prefix: >**\nNeed help? Come here -> https://discord.gg/jjNfaHM', '**Info commands:**\n' + client.commands.filter(cmd => cmd.help.category === 'info').map(cmd => '\ ' + cmd.help.name + '\ ').join("\n"), '**Util commands:**\n' + client.commands.filter(cmd => cmd.help.category === 'util').map(cmd => '\ ' + cmd.help.name + '\ ').join("\n"), '**Fun commands:**\n' + client.commands.filter(cmd => cmd.help.category === 'fun').map(cmd => '\ ' + cmd.help.name + '\ ').join("\n"), 'Music commands:\nmusichelp'];
   let page = 1;
 
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor(config.embed_color)
     .setFooter(`Strona ${page} z ${pages.length}`)
     .setDescription(pages[page-1])

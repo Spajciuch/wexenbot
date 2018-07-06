@@ -41,7 +41,7 @@ trim: false
 });
 
 // Now we just need to present the data to the end user.
-const embed = new Discord.RichEmbed()
+const embed = new Discord.MessageEmbed()
 .setColor(0xCB3837)
 .setAuthor(`${body.name} - npmjs Package Information`, 'https://i.imgur.com/ErKf5Y0.png')
 .setThumbnail('https://i.imgur.com/8DKwbhj.png')

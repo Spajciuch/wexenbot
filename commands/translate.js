@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args, config) => {
           .then(res => {
             from_language = res.from.language.iso
             if (res.from.text.value) tobe_translated = res.from.text.value
-            let translateembed = new Discord.RichEmbed()
+            let translateembed = new Discord.MessageEmbed()
                 .setTitle("Translate") // Optionnal stuff
                 .setColor(config.embed_color) // Optionnal stuff
                 .addField("from: " + from_language, tobe_translated)

@@ -137,7 +137,7 @@ client.on("message", message => {
     .then(everyone => {
       if (!everyone.val()) return;
       if (message.content.includes("@everyone") || message.content.includes("@here")) {
-        let embed = new Discord.RichEmbed()
+        let embed = new Discord.MessageEmbed()
           .setTitle("Someone used @everyone or @here")
           .addField("Server", message.guild.name, true)
           .addField("Member", message.author, true)

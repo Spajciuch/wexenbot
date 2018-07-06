@@ -19,7 +19,7 @@ if(gamemode == 'solo'){
   let kills = solostats.kills
   let wins = solostats.wins
   let top3 = solostats.top_3
-  let embed = new Discord.RichEmbed()
+  let embed = new Discord.MessageEmbed()
   .setColor(config.embed_color)
   .setTitle(data.username + `'s stats [solo]`)
   .addField(`Score`, score,true)
@@ -40,7 +40,7 @@ else if(gamemode == 'duo'){
   let kills = duostats.kills
   let wins = duostats.wins
   let top3 = duostats.top_3
-  let embed = new Discord.RichEmbed()
+  let embed = new Discord.MessageEmbed()
   .setColor(config.embed_color)
   .setTitle(data.username + `'s stats [duo]`)
   .addField(`Score`, score,true)
@@ -61,7 +61,7 @@ else if(gamemode == 'squad'){
   let kills = squadstats.kills
   let wins = squadstats.wins
   let top3 = squadstats.top_3
-  let embed = new Discord.RichEmbed()
+  let embed = new Discord.MessageEmbed()
   .setFooter("Fortnite Statistics [squad]")
   .setColor(`#00a9ff`)
   .setTitle(data.username + `'s statistics [squad]`)
@@ -84,7 +84,7 @@ let winp = lifetime[9]['Win%']
 let kills = lifetime[10]['Kills']
 let kd = lifetime[11]['K/d']
 
-let embed = new Discord.RichEmbed()
+let embed = new Discord.MessageEmbed()
 .setFooter("weXen", config.avatar_url)
 .setTimestamp()
 .setColor(config.embed_color)

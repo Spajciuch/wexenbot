@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args, config) => {
     }
     const member = message.guild.member(user);
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
 		.setColor(config.embed_color)
 		.setTitle(`${user.username}#${user.discriminator}`)
 		.addField("ID:", `${user.id}`, true)

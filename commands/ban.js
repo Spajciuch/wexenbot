@@ -19,7 +19,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
     await member.send("<a:banhammer:460519287191240714> You've been banned on **" + message.guild.name + "**, because " + reason + ". You've been banned by " + message.author.tag + " (id: " + message.author.id + ").")
     .then(member.ban(7, reason))
       .catch(error => message.reply(`<a:banhammer:460519287191240714> Sorry ${message.author} , i can't ban, because: ${error.code}`));
-   let embed = new Discord.RichEmbed()
+   let embed = new Discord.MessageEmbed()
    .setTitle("Banned!")
    .setColor(config.embed_color)
    .setThumbnail(member.avatarURL)

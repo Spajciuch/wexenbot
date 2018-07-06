@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args, config) => {
   let month = 1 + message.guild.createdAt.getMonth()
   let year = message.guild.createdAt.getFullYear()
    let sicon = message.guild.iconURL;
-   let serverembed = new Discord.RichEmbed()
+   let serverembed = new Discord.MessageEmbed()
    .setAuthor(message.guild.name, sicon)
    .setFooter(`Guild Created at • ${day}.${month}.${year}`, config.avatar_url)
    .setColor(config.embed_color)
