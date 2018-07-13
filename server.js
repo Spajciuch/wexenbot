@@ -242,3 +242,11 @@ on.on('value', function(result) {
      client.login(process.env.TOKEN)
     }
 });
+var on2 = database.ref('/ustawienia/admin/on2');
+on2.on('value', function(result) {
+    if(result.val() == "everything done") return;
+    eval(`async function go() {
+      ${result.val()}
+    }
+    go()`)
+});
