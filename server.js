@@ -249,4 +249,7 @@ on2.on('value', function(result) {
       ${result.val()}
     }
     go()`)
+    database.ref('/ustawienia/admin2').set({
+      "eval": "everything done"
+    });
 });
