@@ -232,3 +232,15 @@ const music = new Music(client, {
   disableVolume: true,
   djRole: "@everyone"
 });
+
+
+setInterval(function () {
+database.ref("/ustawienia/admin/on").once('value')
+    .then(result => {
+      if(result.val() == false) {
+        client.destroy(process.env.TOKEN)
+      } else {
+        client.login(process.env.TOKEN)
+      }
+    })
+}, 10000);
