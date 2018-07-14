@@ -211,7 +211,7 @@ client.on('guildMemberAdd', async member => {
   ctx.closePath();
   ctx.clip();
 
-  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
+  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL({"size": 2048, "format": "png"}));
   const avatar = await Canvas.loadImage(buffer);
   ctx.drawImage(avatar, 37, 26, 194, 194);
 
