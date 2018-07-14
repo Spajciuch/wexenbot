@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args, config) => {
           ctx.textAlign="center";
           ctx.fillText(text, canvas.width/2, canvas.height/2)
 
-          const attachment = new Discord.Attachment(canvas.toBuffer(), 'avatar.png');
+          const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'avatar.png');
 
         message.channel.send(`I've tried... ${message.member}`, attachment);
     } else {
