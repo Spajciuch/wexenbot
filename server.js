@@ -1,17 +1,18 @@
-var Discord = require('discord.js');
-var Music = require('discord.js-musicbot-addon-v2');
-var ffmpeg = require('ffmpeg');
-var config = require('./config.json');
-var client = new Discord.Client();
-var fs = require('fs');
-var Canvas = require('canvas');
-var snekfetch = require('snekfetch');
-var reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
+const Discord = require('discord.js');
+const Music = require('discord.js-musicbot-addon-v2');
+const ffmpeg = require('ffmpeg');
+const config = require('./config.json');
+const client = new Discord.Client();
+const fs = require('fs');
+const Canvas = require('canvas');
+const moment = require('moment')
+const snekfetch = require('snekfetch');
+const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
 client.commands = new Discord.Collection();
 
-var firebase = require('firebase');
+const firebase = require('firebase');
 
-var config2 = {
+const config2 = {
   apiKey: "AIzaSyAuwf5sChMywJkDNHpgv9GDTWo5DWcCvlM ",
   authDomain: "wexenbot.firebaseapp.com",
   databaseURL: "https://wexenbot.firebaseio.com/",
@@ -20,7 +21,7 @@ var config2 = {
   messagingSenderId: "158046768135"
 };
 firebase.initializeApp(config2);
-var database = firebase.database();
+const database = firebase.database();
 
 var d = new Date();
 var hour = d.getHours() + 2;
