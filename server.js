@@ -154,68 +154,83 @@ client.on("message", message => {
   }
 })
 
+// Pass the entire Canvas object because you"ll need to access its width, as well its context
 const applyText = (canvas, text) => {
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
 
   // Declare a base size of the font
   let fontSize = 130;
 
   do {
-      // Assign the font to the context and decrement it so it can be measured again
-      ctx.font = `${fontSize -= 10}px Dosis`;
-      // Compare pixel width of the text to the canvas minus the approximate avatar size
+    // Assign the font to the context and decrement it so it can be measured again
+    ctx.font = `${fontSize -= 10}px Dosis`;
+    // Compare pixel width of the text to the canvas minus the approximate avatar size
   } while (ctx.measureText(text).width > canvas.width - 310);
 
   // Return the result to use in the actual canvas
   return ctx.font;
 };
 
-
-
-client.on('guildMemberAdd', async member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+client.on("guildMemberAdd", async member => {
+  const channel = member.guild.channels.find(ch => ch.name === "member-log");
   if (!channel) return;
 
   const canvas = Canvas.createCanvas(700, 250);
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
 
   function drawStroked(canvas, text, x, y, baseline) {
     ctx.font = applyText(canvas, text);
-    ctx.strokeStyle = 'black';
-    ctx.textAlign="center";
+    ctx.strokeStyle = "black";
+    ctx.textAlign = "center";
     ctx.lineWidth = 3;
     ctx.textBaseline = baseline;
     ctx.strokeText(text, x, y);
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = "white";
+    ctx.fillText(text, x, y);
+  }
+  function drawStroked2(canvas, text, x, y, baseline) {
+    ctx.font = "45px Dosis";
+    ctx.strokeStyle = "black";
+    ctx.textAlign = "center";
+    ctx.lineWidth = 3;
+    ctx.textBaseline = baseline;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = "white";
     ctx.fillText(text, x, y);
   }
 
-  const background = await Canvas.loadImage('./welcome-image.png');
+  const background = await Canvas.loadImage("./welcome-image.jpg");
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = '#74037b';
+  ctx.strokeStyle = "#74037b";
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-  // Slightly smaller text placed above the member's display name
-  ctx.font = '30px Dosis';
-  ctx.fillStyle = '#ffffff';
-  drawStroked(canvas, 'joined at\n' + member.joinedAt.toString().slice(0, -14), 450, 159, "bottom")
+  // Slightly smaller text placed above the member"s display name
+  ctx.font = "30px Dosis";
+  ctx.fillStyle = "#ffffff";
+  drawStroked2(canvas, "joined at\n" + moment.utc(member.joinedAt).format("DD.MM.YYYY"), 380, 159, "bottom");
 
   // Add an exclamation point here and below
   ctx.font = applyText(canvas, member.displayName);
-  ctx.fillStyle = '#ffffff';
-  drawStroked(canvas, member.displayName, 450, 120, "bottom")
+  ctx.fillStyle = "#ffffff";
+  drawStroked(canvas, member.displayName, 450, 120, "bottom");
 
   ctx.beginPath();
   ctx.arc(135, 124, 93, 0, Math.PI * 2, false);
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 9;
+  ctx.stroke();
   ctx.closePath();
   ctx.clip();
 
-  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL({"size": 2048, "format": "png"}));
+  console.log(member.user.displayAvatarURL().replace(".webp", ".png") + "?size=2048");
+
+  const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL().replace(".webp", ".png") + "?size=2048")
+    .catch(err => console.log(err));
   const avatar = await Canvas.loadImage(buffer);
   ctx.drawImage(avatar, 37, 26, 194, 194);
 
-  const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+  const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "welcome-image.png");
 
   channel.send(`Welcome to the server, ${member}!`, attachment);
 });
