@@ -5,6 +5,6 @@ const lvl = await database.ref("/" + message.author.id + '/xp').once(value.val()
 }
 message.reply(lvl)
 module.exports.help = {
-  name: "invite",
+  name: "lvl",
   category: "info"
 }
