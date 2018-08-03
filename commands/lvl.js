@@ -4,6 +4,7 @@ const database = firebase.database();
 database.ref("/" + message.author.id + '/xp').once(value).then(xp => {
   message.reply(xp)
 })
+
 }
 message.reply(lvl)
 module.exports.help = {
