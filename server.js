@@ -6,6 +6,7 @@ const client = new Discord.Client();
 const fs = require('fs');
 const Canvas = require('canvas');
 const moment = require('moment')
+const snekfetch = require('snekfetch')
 const reactionrem = require('@spyte-corp/discord.js-remove-on-reaction');
 client.commands = new Discord.Collection();
 

@@ -27,6 +27,7 @@
     "ms": "^2.1.1",
     "node-opus": "0.3.0",
     "quick.hook": "1.4.2",
+    "snekfetch": "^4.0.4",
     "text-meme": "2.3.0",
     "youtube-playlist-info": "1.1.2",
     "ytdl-core": "0.20.4",
