@@ -151,7 +151,11 @@ client.on("message", message => {
       }
     })
   if (message.content == '<@460153151073288202>' || message.content == '<!@460153151073288202>') {
-    message.channel.send('What?')
+    database.ref(`/ustawienia/${message.guild.id}/prefix`).once('value')
+      .then(snapshot => {
+        oprefix = snapshot.val()
+    message.channel.send('Prefix: ' + oprefix)
+  })
   }
 })
 
