@@ -1173,16 +1173,6 @@ discord.js-musicbot-addon-v2@1.10.4:
     ytdl-core "^0.20.1"
     ytsearcher "^1.0.3"
 
-discord.js@^11.4.2:
-  version "11.4.2"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.4.2.tgz#54586981926521572051f2a30b984aad2b49786e"
-  dependencies:
-    long "^4.0.0"
-    prism-media "^0.0.3"
-    snekfetch "^3.6.4"
-    tweetnacl "^1.0.0"
-    ws "^4.0.0"
-
 discord.js@discordjs/discord.js:
   version "12.0.0-dev"
   resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/f8057b01cb321d468c61b04227b9589fb4dcded1"
@@ -1190,9 +1180,9 @@ discord.js@discordjs/discord.js:
     form-data "^2.3.2"
     node-fetch "^2.1.2"
     pako "^1.0.0"
-    prism-media amishshah/prism-media
+    prism-media "^0.3.0"
     tweetnacl "^1.0.0"
-    ws "^6.0.0"
+    ws "^4.0.0"
 
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
@@ -3507,10 +3497,6 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prism-media@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.3.tgz#8842d4fae804f099d3b48a9a38e3c2bab6f4855b"
-
 prism-media@amishshah/prism-media:
   version "0.3.1"
   resolved "https://codeload.github.com/amishshah/prism-media/tar.gz/7146426e462bf91b39053de4cf8b78c72490cd54"
@@ -3989,10 +3975,6 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
-
-snekfetch@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/snekfetch/-/snekfetch-3.6.4.tgz#d13e80a616d892f3d38daae4289f4d258a645120"
 
 snekfetch@^4.0.2:
   version "4.0.4"
@@ -4646,13 +4628,6 @@ write-file-atomic@^2.0.0:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
-
-ws@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-4.1.0.tgz#a979b5d7d4da68bf54efe0408967c324869a7289"
-  dependencies:
-    async-limiter "~1.0.0"
-    safe-buffer "~5.1.0"
 
 ws@^6.0.0:
   version "6.0.0"
