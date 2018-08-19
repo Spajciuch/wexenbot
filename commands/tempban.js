@@ -14,7 +14,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
 
     setTimeout(function() {
         message.guild.members.unban(toban.id)
-        message.channel.send(`<@${tomute.id}> has been unbanned!`);
+        message.channel.send(`<@${toban.id}> has been unbanned!`);
     }, ms(bantime));
                      })
 }
