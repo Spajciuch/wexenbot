@@ -4,6 +4,7 @@ module.exports.run = async (bot, message, args, config) => {
 var firebase = require('firebase')
 await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('value')
 .then(async admin => { if(admin.val() == false) return message.reply('Module is off.');
+console.log(message)
       if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You aren't permitted to do that");
     let toban = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!toban) return message.reply("Couldn't find user.");
