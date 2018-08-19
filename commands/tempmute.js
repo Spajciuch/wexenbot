@@ -7,7 +7,7 @@ await firebase.database().ref(`/ustawienia/${message.guild.id}/admin`).once('val
       if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You aren't permitted to do that");
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!tomute) return message.reply("Couldn't find user.");
-    let muterole = message.guild.roles.find(`name`, "Muted");
+    let muterole = message.guild.roles.find('name', "Muted");
 
     if (!muterole) {
         try {
