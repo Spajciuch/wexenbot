@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
-String.prototype.reverse = String.split("").reverse().join("");
 if (typeof String.prototype.reverse != 'function') {
     String.prototype.reverse = function() {
             return this.split("").reverse().join("")
