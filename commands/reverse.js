@@ -2,11 +2,11 @@ const Discord = require('discord.js')
 module.exports.run = async (client, message, args, config) => {
 String.prototype.reverse = String.split("").reverse().join("");
 if (typeof String.prototype.reverse != 'function') {
-    String.prototype.reverse = function (this) {
+    String.prototype.reverse = function() {
             return this.split("").reverse().join("")
     };
 }
-let reversed = args.join(" ").reverse
+let reversed = args.join(" ").reverse()
 if(reversed.includes("@everyone") || reversed.includes("@here")) {
     const embed = {
         "title": "You won't do that...",
