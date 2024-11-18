@@ -16,7 +16,7 @@
     "discord.js-musicbot-addon-v2": "1.10.4",
     "edit-json-file": "^1.0.8",
     "ffmpeg": "^0.0.4",
-    "firebase": "5.1.0",
+    "firebase": "10.9.0",
     "firebase-admin": "5.12.1",
     "fortnite": "4.1.1",
     "google": "2.1.0",
